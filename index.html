@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ZUME - Smart Camera Tools for iOS. Mirror with Emotion Coach, Magnifier with OCR & Translation, DailyPhoto with Time-Lapse Videos.">
-    <meta name="keywords" content="ZUME, iOS App, Mirror, Magnifier, DailyPhoto, Camera, OCR, Translation, Selfie">
+    <meta name="description" content="ZUME Studio - Independent App Development. Crafting innovative iOS, tvOS & multiplayer experiences.">
+    <meta name="keywords" content="iOS Apps, tvOS, Apple TV, Indie Developer, ZUME, PARANOID, 3DME, CRYPTOR">
     <meta name="author" content="ZUME Studio">
     
-    <!-- Open Graph / Social Media -->
-    <meta property="og:title" content="ZUME Studio - Smart Camera Tools for iOS">
-    <meta property="og:description" content="Mirror with Emotion Coach, Magnifier with OCR & Translation, DailyPhoto with Time-Lapse Videos.">
+    <meta property="og:title" content="ZUME Studio - Independent App Development">
+    <meta property="og:description" content="Crafting innovative iOS, tvOS & multiplayer experiences.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zume.studio">
     
-    <title>ZUME Studio - Smart Camera Tools for iOS</title>
+    <title>ZUME Studio - Independent App Development</title>
     
     <style>
         * {
@@ -23,20 +22,43 @@
         }
         
         :root {
-            --primary: #007AFF;
-            --secondary: #5856D6;
-            --accent: #FF3B30;
-            --dark: #1a1a2e;
-            --light: #f8f9fa;
-            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --bg-dark: #0a0a0f;
+            --bg-card: #12121a;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --accent-zume: #667eea;
+            --accent-paranoid: #e63946;
+            --accent-3dme: #00d4aa;
+            --accent-cryptor: #f7931a;
+            --accent-focus: #8b5cf6;
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: var(--dark);
-            color: var(--light);
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
+        }
+        
+        /* Animated Background */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(230, 57, 70, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(0, 212, 170, 0.05) 0%, transparent 50%);
+            z-index: -1;
+            animation: bgPulse 15s ease-in-out infinite;
+        }
+        
+        @keyframes bgPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
         }
         
         /* Header */
@@ -49,174 +71,232 @@
             width: 100%;
             top: 0;
             z-index: 100;
-            background: rgba(26, 26, 46, 0.9);
-            backdrop-filter: blur(10px);
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
         
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            background: var(--gradient);
+            background: linear-gradient(135deg, #667eea, #764ba2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            text-decoration: none;
         }
         
         nav a {
-            color: var(--light);
+            color: var(--text-secondary);
             text-decoration: none;
             margin-left: 30px;
             font-weight: 500;
-            opacity: 0.8;
-            transition: opacity 0.3s;
+            font-size: 0.95rem;
+            transition: color 0.3s;
         }
         
         nav a:hover {
-            opacity: 1;
+            color: var(--text-primary);
         }
         
         /* Hero Section */
         .hero {
-            min-height: 100vh;
+            min-height: 60vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 120px 20px 60px;
-            background: radial-gradient(ellipse at bottom, #1a1a2e 0%, #0f0f1a 100%);
+            padding: 140px 20px 60px;
         }
         
         .hero h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 800;
             margin-bottom: 20px;
-            background: var(--gradient);
+            letter-spacing: -1px;
+        }
+        
+        .hero h1 span {
+            background: linear-gradient(135deg, #667eea, #764ba2, #e63946);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
         .hero .tagline {
-            font-size: 1.5rem;
-            opacity: 0.9;
-            margin-bottom: 40px;
+            font-size: 1.3rem;
+            color: var(--text-secondary);
             max-width: 600px;
         }
         
-        .app-icon {
-            width: 180px;
-            height: 180px;
-            border-radius: 40px;
-            margin-bottom: 30px;
-            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
-            background: var(--gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 80px;
-        }
-        
-        .download-btn {
-            display: inline-block;
-            background: var(--light);
-            color: var(--dark);
-            padding: 16px 40px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .download-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
-        }
-        
-        .download-btn img {
-            height: 50px;
-        }
-        
-        /* Features Section */
-        .features {
-            padding: 100px 20px;
-            background: var(--dark);
-        }
-        
-        .features h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 60px;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+        /* Apps Section */
+        .apps-section {
+            padding: 60px 20px 100px;
             max-width: 1200px;
             margin: 0 auto;
         }
         
-        .feature-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 40px;
+        .section-title {
             text-align: center;
-            transition: transform 0.3s, background 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--text-secondary);
+            margin-bottom: 50px;
         }
         
-        .feature-card:hover {
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        /* App Card */
+        .app-card {
+            background: var(--bg-card);
+            border-radius: 24px;
+            padding: 40px 30px;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                        box-shadow 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .app-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--card-accent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .app-card:hover {
             transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
         }
         
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
+        .app-card:hover::before {
+            opacity: 1;
         }
         
-        .feature-card h3 {
+        .app-card.zume { --card-accent: var(--accent-zume); }
+        .app-card.paranoid { --card-accent: var(--accent-paranoid); }
+        .app-card.threeDme { --card-accent: var(--accent-3dme); }
+        .app-card.cryptor { --card-accent: var(--accent-cryptor); }
+        .app-card.focus { --card-accent: var(--accent-focus); }
+        
+        .app-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 22px;
+            margin: 0 auto 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+        
+        .app-card:hover .app-icon {
+            transform: scale(1.1);
+        }
+        
+        .app-icon-placeholder {
+            width: 100px;
+            height: 100px;
+            border-radius: 22px;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            background: linear-gradient(135deg, var(--card-accent), rgba(255,255,255,0.1));
+        }
+        
+        .app-card h3 {
             font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--light);
+            font-weight: 700;
+            margin-bottom: 10px;
         }
         
-        .feature-card p {
-            opacity: 0.8;
-            line-height: 1.7;
+        .app-card .platform {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+        }
+        
+        .app-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .app-status {
+            margin-top: 20px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        
+        .status-available {
+            background: rgba(0, 212, 170, 0.2);
+            color: #00d4aa;
+        }
+        
+        .status-coming {
+            background: rgba(139, 92, 246, 0.2);
+            color: #8b5cf6;
+        }
+        
+        .status-development {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
         }
         
         /* Footer */
         footer {
             padding: 60px 20px;
             text-align: center;
-            background: rgba(0, 0, 0, 0.3);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
         
         footer a {
-            color: var(--light);
-            opacity: 0.7;
+            color: var(--text-secondary);
             text-decoration: none;
             margin: 0 20px;
-            transition: opacity 0.3s;
+            font-size: 0.9rem;
+            transition: color 0.3s;
         }
         
         footer a:hover {
-            opacity: 1;
+            color: var(--text-primary);
         }
         
         .copyright {
             margin-top: 30px;
-            opacity: 0.5;
-            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
         }
         
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
             
             .hero .tagline {
@@ -227,63 +307,98 @@
                 padding: 15px 20px;
             }
             
-            nav a {
-                margin-left: 15px;
-                font-size: 0.9rem;
+            nav {
+                display: none;
             }
             
-            .logo {
-                font-size: 1.4rem;
+            .apps-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .app-card {
+                padding: 30px 25px;
             }
         }
     </style>
 </head>
 <body>
+    <div class="bg-gradient"></div>
+    
     <header>
-        <div class="logo">ZUME Studio</div>
+        <a href="index.html" class="logo">ZUME Studio</a>
         <nav>
-            <a href="#features">Features</a>
-            <a href="privacy.html">Datenschutz</a>
-            <a href="imprint.html">Impressum</a>
+            <a href="#apps">Apps</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="imprint.html">Imprint</a>
         </nav>
     </header>
     
     <section class="hero">
-        <div class="app-icon">📱</div>
-        <h1>ZUME</h1>
-        <p class="tagline">Smart Camera Tools for iOS – Mirror with Emotion Coach, Magnifier with OCR & Translation, DailyPhoto with Time-Lapse Videos.</p>
-        <a href="https://apps.apple.com/app/id6758212967" class="download-btn">
-            🍎 Download on the App Store
-        </a>
+        <h1>Independent <span>App Development</span></h1>
+        <p class="tagline">Crafting innovative iOS, tvOS & multiplayer experiences. Based in Germany.</p>
     </section>
     
-    <section class="features" id="features">
-        <h2>Three Modes. Endless Possibilities.</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">🪞</div>
-                <h3>Mirror</h3>
-                <p>Your intelligent mirror with Softbox lighting, Emotion Coach, and Celebrity Match. Discover which celebrity you look like!</p>
-            </div>
+    <section class="apps-section" id="apps">
+        <p class="section-title">Our Apps</p>
+        
+        <div class="apps-grid">
+            <!-- ZUME -->
+            <a href="apps/zume.html" class="app-card zume">
+                <img src="images/zume-icon.png" alt="ZUME" class="app-icon" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div class="app-icon-placeholder" style="display:none;">📱</div>
+                <span class="platform">iOS</span>
+                <h3>ZUME</h3>
+                <p>Smart Camera Tools – Mirror with Emotion Coach, Magnifier with OCR & Translation, DailyPhoto with Time-Lapse.</p>
+                <span class="app-status status-available">✓ Available</span>
+            </a>
             
-            <div class="feature-card">
-                <div class="feature-icon">🔍</div>
-                <h3>Magnifier</h3>
-                <p>Powerful magnification with real-time OCR text recognition and instant translation. Perfect for reading small text or foreign languages.</p>
-            </div>
+            <!-- PARANOID -->
+            <a href="apps/paranoid.html" class="app-card paranoid">
+                <img src="images/paranoid-icon.png" alt="PARANOID" class="app-icon" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div class="app-icon-placeholder" style="display:none;">🎭</div>
+                <span class="platform">iOS · Multiplayer</span>
+                <h3>PARANOID</h3>
+                <p>Social Deduction Party Game. One player is secretly the Chosen One – find them through 8 rounds of discussion and deduction.</p>
+                <span class="app-status status-coming">Coming Soon</span>
+            </a>
             
-            <div class="feature-card">
-                <div class="feature-icon">📸</div>
-                <h3>DailyPhoto</h3>
-                <p>Capture your daily journey with family profiles, ghost overlay for perfect alignment, and automatic time-lapse video creation.</p>
-            </div>
+            <!-- 3DME -->
+            <a href="apps/3dme.html" class="app-card threeDme">
+                <img src="images/3dme-icon.png" alt="3DME" class="app-icon" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div class="app-icon-placeholder" style="display:none;">🎬</div>
+                <span class="platform">tvOS · Apple TV 4K</span>
+                <h3>3DME</h3>
+                <p>Convert 2D photos into stereoscopic 3D using AI depth estimation. For polarized 3D TVs with Metal compute shaders.</p>
+                <span class="app-status status-coming">Coming Soon</span>
+            </a>
+            
+            <!-- CRYPTOR -->
+            <a href="apps/cryptor.html" class="app-card cryptor">
+                <img src="images/cryptor-icon.png" alt="CRYPTOR" class="app-icon" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div class="app-icon-placeholder" style="display:none;">₿</div>
+                <span class="platform">iOS</span>
+                <h3>CRYPTOR</h3>
+                <p>Crypto portfolio tracker with interactive education platform. The most intuitive crypto app for beginners AND advanced users.</p>
+                <span class="app-status status-coming">Coming Soon</span>
+            </a>
+            
+            <!-- FOCUS-ON -->
+            <a href="apps/focus-on.html" class="app-card focus">
+                <img src="images/focus-icon.png" alt="FOCUS-ON" class="app-icon" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div class="app-icon-placeholder" style="display:none;">🎧</div>
+                <span class="platform">iOS</span>
+                <h3>FOCUS-ON</h3>
+                <p>Ambient soundscapes and focus music to boost your productivity and concentration.</p>
+                <span class="app-status status-development">In Development</span>
+            </a>
         </div>
     </section>
     
     <footer>
-        <a href="privacy.html">Datenschutz / Privacy Policy</a>
-        <a href="imprint.html">Impressum / Imprint</a>
-        <a href="mailto:hello@zume.studio">Kontakt / Contact</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="imprint.html">Imprint</a>
+        <a href="mailto:hello@zume.studio">Contact</a>
         <p class="copyright">© 2026 ZUME Studio. All rights reserved.</p>
     </footer>
 </body>
