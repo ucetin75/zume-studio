@@ -3,15 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ZUME Studio - Independent App Development. Crafting innovative iOS, tvOS & multiplayer experiences.">
-    <meta name="keywords" content="iOS Apps, tvOS, Apple TV, Indie Developer, ZUME, PARANOID, 3DME, CRYPTOR">
-    <meta name="author" content="ZUME Studio">
-    
-    <meta property="og:title" content="ZUME Studio - Independent App Development">
-    <meta property="og:description" content="Crafting innovative iOS, tvOS & multiplayer experiences.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://zume.studio">
-    
+    <meta name="description" content="ZUME Studio - Independent App Development for iOS, tvOS & Multiplayer.">
     <title>ZUME Studio - Independent App Development</title>
     
     <style>
@@ -22,15 +14,11 @@
         }
         
         :root {
-            --bg-dark: #0a0a0f;
-            --bg-card: #12121a;
+            --bg-dark: #000000;
+            --bg-sidebar: #0a0a0a;
             --text-primary: #ffffff;
-            --text-secondary: rgba(255, 255, 255, 0.7);
-            --accent-zume: #667eea;
-            --accent-paranoid: #e63946;
-            --accent-3dme: #00d4aa;
-            --accent-cryptor: #f7931a;
-            --accent-focus: #8b5cf6;
+            --text-secondary: rgba(255, 255, 255, 0.6);
+            --border-color: rgba(255, 255, 255, 0.1);
         }
         
         body {
@@ -38,368 +26,727 @@
             background: var(--bg-dark);
             color: var(--text-primary);
             line-height: 1.6;
-            overflow-x: hidden;
+            overflow: hidden;
+            height: 100vh;
         }
         
-        /* Animated Background */
-        .bg-gradient {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(ellipse at 20% 20%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(230, 57, 70, 0.1) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(0, 212, 170, 0.05) 0%, transparent 50%);
-            z-index: -1;
-            animation: bgPulse 15s ease-in-out infinite;
-        }
-        
-        @keyframes bgPulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-        
-        /* Header */
-        header {
-            padding: 20px 40px;
+        /* Layout */
+        .layout {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
-            background: rgba(10, 10, 15, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            height: 100vh;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 120px;
+            background: var(--bg-sidebar);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            padding: 20px 15px;
         }
         
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin-bottom: 40px;
+        }
+        
+        .logo img {
+            width: 90px;
+            height: auto;
+        }
+        
+        .logo-text {
+            font-size: 1.1rem;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+        
+        .logo-text .zume {
+            background: linear-gradient(135deg, #00d4ff, #7c3aed);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-decoration: none;
         }
         
-        nav a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            margin-left: 30px;
-            font-weight: 500;
+        .logo-text .studio {
+            background: linear-gradient(135deg, #ff006e, #fb5607);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* App Navigation */
+        .app-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            flex: 1;
+        }
+        
+        .app-nav-item {
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .app-nav-item:hover {
+            transform: scale(1.08);
+        }
+        
+        .app-nav-item.active {
+            transform: scale(1.05);
+        }
+        
+        .app-nav-item.active::before {
+            content: '';
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 60%;
+            background: var(--app-color, #fff);
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .app-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .app-nav-item:hover .app-icon {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+        }
+        
+        /* Tooltip */
+        .tooltip {
+            position: absolute;
+            left: 85px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(30, 30, 30, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 10px 15px;
+            border-radius: 10px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+            z-index: 100;
+            border: 1px solid var(--border-color);
+        }
+        
+        .tooltip::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 6px solid transparent;
+            border-right-color: rgba(30, 30, 30, 0.95);
+        }
+        
+        .app-nav-item:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+            left: 90px;
+        }
+        
+        .tooltip-name {
+            font-weight: 700;
             font-size: 0.95rem;
-            transition: color 0.3s;
-        }
-        
-        nav a:hover {
             color: var(--text-primary);
         }
         
-        /* Hero Section */
-        .hero {
-            min-height: 60vh;
+        .tooltip-platform {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+        
+        /* Main Content */
+        .main {
+            flex: 1;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 140px 20px 60px;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
-        }
-        
-        .hero h1 span {
-            background: linear-gradient(135deg, #667eea, #764ba2, #e63946);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero .tagline {
-            font-size: 1.3rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-        }
-        
-        /* Apps Section */
-        .apps-section {
-            padding: 60px 20px 100px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .section-title {
-            text-align: center;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--text-secondary);
-            margin-bottom: 50px;
-        }
-        
-        .apps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        
-        /* App Card */
-        .app-card {
-            background: var(--bg-card);
-            border-radius: 24px;
-            padding: 40px 30px;
-            text-align: center;
-            text-decoration: none;
-            color: inherit;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-                        box-shadow 0.4s ease;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
             overflow: hidden;
         }
         
-        .app-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--card-accent);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .app-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-        }
-        
-        .app-card:hover::before {
-            opacity: 1;
-        }
-        
-        .app-card.zume { --card-accent: var(--accent-zume); }
-        .app-card.paranoid { --card-accent: var(--accent-paranoid); }
-        .app-card.threeDme { --card-accent: var(--accent-3dme); }
-        .app-card.cryptor { --card-accent: var(--accent-cryptor); }
-        .app-card.focus { --card-accent: var(--accent-focus); }
-        
-        .app-icon {
-            width: 100px;
-            height: 100px;
-            border-radius: 22px;
-            margin: 0 auto 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s;
-        }
-        
-        .app-card:hover .app-icon {
-            transform: scale(1.1);
-        }
-        
-        .app-icon-placeholder {
-            width: 100px;
-            height: 100px;
-            border-radius: 22px;
-            margin: 0 auto 25px;
+        /* Top Bar */
+        .topbar {
             display: flex;
+            justify-content: flex-end;
             align-items: center;
-            justify-content: center;
-            font-size: 50px;
-            background: linear-gradient(135deg, var(--card-accent), rgba(255,255,255,0.1));
+            padding: 20px 40px;
+            border-bottom: 1px solid var(--border-color);
         }
         
-        .app-card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-        
-        .app-card .platform {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text-secondary);
-        }
-        
-        .app-card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        
-        .app-status {
-            margin-top: 20px;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-        }
-        
-        .status-available {
-            background: rgba(0, 212, 170, 0.2);
-            color: #00d4aa;
-        }
-        
-        .status-coming {
-            background: rgba(139, 92, 246, 0.2);
-            color: #8b5cf6;
-        }
-        
-        .status-development {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text-secondary);
-        }
-        
-        /* Footer */
-        footer {
-            padding: 60px 20px;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        footer a {
+        .topbar a {
             color: var(--text-secondary);
             text-decoration: none;
-            margin: 0 20px;
             font-size: 0.9rem;
+            margin-left: 30px;
             transition: color 0.3s;
         }
         
-        footer a:hover {
+        .topbar a:hover {
             color: var(--text-primary);
         }
         
-        .copyright {
-            margin-top: 30px;
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 0.85rem;
+        /* Content Area */
+        .content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 60px;
+        }
+        
+        /* App Content Panels */
+        .app-panel {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        .app-panel.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* App Header */
+        .app-header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .app-header-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 28px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        }
+        
+        .app-header-info h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        
+        .app-header-info .tagline {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 500px;
+        }
+        
+        .app-header-info .platform-badge {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 6px 14px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        .app-store-btn {
+            display: inline-block;
+            margin-top: 20px;
+            background: #fff;
+            color: #000;
+            padding: 14px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .app-store-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+        
+        .coming-soon-badge {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 14px 28px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+        
+        /* Features Grid */
+        .features-section {
+            margin-top: 50px;
+        }
+        
+        .features-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 25px;
+            transition: background 0.3s, transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-3px);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        /* Screenshots Section */
+        .screenshots-section {
+            margin-top: 50px;
+        }
+        
+        .screenshots-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+        
+        .screenshots-grid {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+        }
+        
+        .screenshot {
+            flex-shrink: 0;
+            width: 220px;
+            height: 440px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .screenshot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+        
+        /* Welcome Panel */
+        .welcome-panel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-align: center;
+        }
+        
+        .welcome-panel h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        .welcome-panel h1 .highlight {
+            background: linear-gradient(135deg, #00d4ff, #7c3aed, #ff006e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .welcome-panel p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 500px;
+        }
+        
+        .welcome-hint {
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .welcome-hint .arrow {
+            font-size: 1.5rem;
+            animation: bounce 1.5s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-10px); }
         }
         
         /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.2rem;
+        @media (max-width: 900px) {
+            .sidebar {
+                width: 80px;
+                padding: 15px 10px;
             }
             
-            .hero .tagline {
-                font-size: 1.1rem;
+            .logo-text {
+                font-size: 0.8rem;
             }
             
-            header {
+            .app-icon {
+                width: 50px;
+                height: 50px;
+                border-radius: 12px;
+            }
+            
+            .content {
+                padding: 30px;
+            }
+            
+            .app-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .app-header-info h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .topbar {
                 padding: 15px 20px;
             }
             
-            nav {
-                display: none;
-            }
-            
-            .apps-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .app-card {
-                padding: 30px 25px;
+            .topbar a {
+                margin-left: 15px;
+                font-size: 0.8rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="bg-gradient"></div>
-    
-    <header>
-        <a href="index.html" class="logo">ZUME Studio</a>
-        <nav>
-            <a href="#apps">Apps</a>
-            <a href="privacy.html">Privacy</a>
-            <a href="imprint.html">Imprint</a>
-        </nav>
-    </header>
-    
-    <section class="hero">
-        <h1>Independent <span>App Development</span></h1>
-        <p class="tagline">Crafting innovative iOS, tvOS & multiplayer experiences. Based in Germany.</p>
-    </section>
-    
-    <section class="apps-section" id="apps">
-        <p class="section-title">Our Apps</p>
+    <div class="layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-text">
+                    <span class="zume">ZUME</span><br>
+                    <span class="studio">STUDIO</span>
+                </div>
+            </div>
+            
+            <nav class="app-nav">
+                <!-- ZUME -->
+                <div class="app-nav-item active" data-app="zume" style="--app-color: #00d4aa;">
+                    <img src="images/zume-icon.png" alt="ZUME" class="app-icon">
+                    <div class="tooltip">
+                        <div class="tooltip-name">ZUME</div>
+                        <div class="tooltip-platform">iOS</div>
+                    </div>
+                </div>
+                
+                <!-- PARANOID -->
+                <div class="app-nav-item" data-app="paranoid" style="--app-color: #e63946;">
+                    <img src="images/paranoid-icon.png" alt="PARANOID" class="app-icon">
+                    <div class="tooltip">
+                        <div class="tooltip-name">PARANOID</div>
+                        <div class="tooltip-platform">iOS · Multiplayer</div>
+                    </div>
+                </div>
+                
+                <!-- CRYPTOR -->
+                <div class="app-nav-item" data-app="cryptor" style="--app-color: #f7931a;">
+                    <img src="images/cryptor-icon.png" alt="CRYPTOR" class="app-icon">
+                    <div class="tooltip">
+                        <div class="tooltip-name">CRYPTOR</div>
+                        <div class="tooltip-platform">iOS</div>
+                    </div>
+                </div>
+                
+                <!-- FOCUS-ON -->
+                <div class="app-nav-item" data-app="focus" style="--app-color: #00d4aa;">
+                    <img src="images/focus-icon.png" alt="FOCUS-ON" class="app-icon">
+                    <div class="tooltip">
+                        <div class="tooltip-name">FOCUS-ON</div>
+                        <div class="tooltip-platform">iOS</div>
+                    </div>
+                </div>
+                
+                <!-- 3DME -->
+                <div class="app-nav-item" data-app="3dme" style="--app-color: #4a90d9;">
+                    <img src="images/3dme-icon.png" alt="3DME" class="app-icon">
+                    <div class="tooltip">
+                        <div class="tooltip-name">3DME</div>
+                        <div class="tooltip-platform">tvOS · Apple TV</div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
         
-        <div class="apps-grid">
-            <!-- ZUME -->
-            <a href="apps/zume.html" class="app-card zume">
-                <img src="images/zume-icon.png" alt="ZUME" class="app-icon" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                <div class="app-icon-placeholder" style="display:none;">📱</div>
-                <span class="platform">iOS</span>
-                <h3>ZUME</h3>
-                <p>Smart Camera Tools – Mirror with Emotion Coach, Magnifier with OCR & Translation, DailyPhoto with Time-Lapse.</p>
-                <span class="app-status status-available">✓ Available</span>
-            </a>
+        <!-- Main -->
+        <main class="main">
+            <!-- Top Bar -->
+            <div class="topbar">
+                <a href="privacy.html">Privacy</a>
+                <a href="imprint.html">Imprint</a>
+            </div>
             
-            <!-- PARANOID -->
-            <a href="apps/paranoid.html" class="app-card paranoid">
-                <img src="images/paranoid-icon.png" alt="PARANOID" class="app-icon" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                <div class="app-icon-placeholder" style="display:none;">🎭</div>
-                <span class="platform">iOS · Multiplayer</span>
-                <h3>PARANOID</h3>
-                <p>Social Deduction Party Game. One player is secretly the Chosen One – find them through 8 rounds of discussion and deduction.</p>
-                <span class="app-status status-coming">Coming Soon</span>
-            </a>
-            
-            <!-- 3DME -->
-            <a href="apps/3dme.html" class="app-card threeDme">
-                <img src="images/3dme-icon.png" alt="3DME" class="app-icon" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                <div class="app-icon-placeholder" style="display:none;">🎬</div>
-                <span class="platform">tvOS · Apple TV 4K</span>
-                <h3>3DME</h3>
-                <p>Convert 2D photos into stereoscopic 3D using AI depth estimation. For polarized 3D TVs with Metal compute shaders.</p>
-                <span class="app-status status-coming">Coming Soon</span>
-            </a>
-            
-            <!-- CRYPTOR -->
-            <a href="apps/cryptor.html" class="app-card cryptor">
-                <img src="images/cryptor-icon.png" alt="CRYPTOR" class="app-icon" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                <div class="app-icon-placeholder" style="display:none;">₿</div>
-                <span class="platform">iOS</span>
-                <h3>CRYPTOR</h3>
-                <p>Crypto portfolio tracker with interactive education platform. The most intuitive crypto app for beginners AND advanced users.</p>
-                <span class="app-status status-coming">Coming Soon</span>
-            </a>
-            
-            <!-- FOCUS-ON -->
-            <a href="apps/focus-on.html" class="app-card focus">
-                <img src="images/focus-icon.png" alt="FOCUS-ON" class="app-icon" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                <div class="app-icon-placeholder" style="display:none;">🎧</div>
-                <span class="platform">iOS</span>
-                <h3>FOCUS-ON</h3>
-                <p>Ambient soundscapes and focus music to boost your productivity and concentration.</p>
-                <span class="app-status status-development">In Development</span>
-            </a>
-        </div>
-    </section>
+            <!-- Content -->
+            <div class="content">
+                <!-- Welcome Panel -->
+                <div class="app-panel active" id="welcome">
+                    <div class="welcome-panel">
+                        <h1>Welcome to <span class="highlight">ZUME Studio</span></h1>
+                        <p>Independent App Development for iOS, tvOS & Multiplayer experiences. Based in Germany.</p>
+                        <div class="welcome-hint">
+                            <span class="arrow">←</span>
+                            <span>Select an app to learn more</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ZUME Panel -->
+                <div class="app-panel" id="zume">
+                    <div class="app-header">
+                        <img src="images/zume-icon.png" alt="ZUME" class="app-header-icon">
+                        <div class="app-header-info">
+                            <h1>ZUME</h1>
+                            <p class="tagline">Smart Camera Tools – Mirror with Emotion Coach, Magnifier with OCR & Translation, DailyPhoto with Time-Lapse.</p>
+                            <span class="platform-badge">iOS 17+</span>
+                            <br>
+                            <a href="https://apps.apple.com/app/id6758212967" class="app-store-btn">🍎 Download on App Store</a>
+                        </div>
+                    </div>
+                    
+                    <div class="features-section">
+                        <h2>Features</h2>
+                        <div class="features-grid">
+                            <div class="feature-card">
+                                <div class="feature-icon">🪞</div>
+                                <h3>Mirror Mode</h3>
+                                <p>Intelligent mirror with Softbox lighting, Emotion Coach that detects your mood, and Celebrity Match to find your famous lookalike.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🔍</div>
+                                <h3>Magnifier Mode</h3>
+                                <p>Powerful magnification with real-time OCR text recognition and instant translation using iOS 17 Translation API.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">📸</div>
+                                <h3>DailyPhoto Mode</h3>
+                                <p>Capture your daily journey with family profiles, ghost overlay for perfect alignment, and automatic time-lapse video creation.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="screenshots-section">
+                        <h2>Screenshots</h2>
+                        <div class="screenshots-grid">
+                            <div class="screenshot">Screenshot 1</div>
+                            <div class="screenshot">Screenshot 2</div>
+                            <div class="screenshot">Screenshot 3</div>
+                            <div class="screenshot">Screenshot 4</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- PARANOID Panel -->
+                <div class="app-panel" id="paranoid">
+                    <div class="app-header">
+                        <img src="images/paranoid-icon.png" alt="PARANOID" class="app-header-icon">
+                        <div class="app-header-info">
+                            <h1>PARANOID</h1>
+                            <p class="tagline">Multiplayer Social Deduction Party Game. One player is secretly the Chosen One – nobody knows who, not even the player themselves.</p>
+                            <span class="platform-badge">iOS · 4-8 Players · Multiplayer</span>
+                            <br>
+                            <span class="coming-soon-badge">🎭 Coming Soon</span>
+                        </div>
+                    </div>
+                    
+                    <div class="features-section">
+                        <h2>How It Works</h2>
+                        <div class="features-grid">
+                            <div class="feature-card">
+                                <div class="feature-icon">👥</div>
+                                <h3>4-8 Players</h3>
+                                <p>Gather your friends for a thrilling party game. Play together in the same room or remotely.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🎯</div>
+                                <h3>The Chosen One</h3>
+                                <p>One player is secretly designated as the Chosen One. Nobody knows who it is – not even the player themselves.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🔍</div>
+                                <h3>8 Rounds</h3>
+                                <p>Discuss, deduce, and identify the Chosen One through strategic questioning and observation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- CRYPTOR Panel -->
+                <div class="app-panel" id="cryptor">
+                    <div class="app-header">
+                        <img src="images/cryptor-icon.png" alt="CRYPTOR" class="app-header-icon">
+                        <div class="app-header-info">
+                            <h1>CRYPTOR</h1>
+                            <p class="tagline">The most intuitive crypto app for beginners AND advanced users. Track your portfolio and learn crypto through interactive education.</p>
+                            <span class="platform-badge">iOS</span>
+                            <br>
+                            <span class="coming-soon-badge">₿ Coming Soon</span>
+                        </div>
+                    </div>
+                    
+                    <div class="features-section">
+                        <h2>Features</h2>
+                        <div class="features-grid">
+                            <div class="feature-card">
+                                <div class="feature-icon">📊</div>
+                                <h3>Portfolio Tracker</h3>
+                                <p>Track all your crypto holdings in one place. Real-time prices, performance charts, and portfolio analytics.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🎓</div>
+                                <h3>Interactive Education</h3>
+                                <p>Learn crypto through interactive lessons, quizzes, and simulations. From basics to advanced trading strategies.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🔔</div>
+                                <h3>Smart Alerts</h3>
+                                <p>Custom price alerts and market notifications. Never miss an important market movement.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FOCUS-ON Panel -->
+                <div class="app-panel" id="focus">
+                    <div class="app-header">
+                        <img src="images/focus-icon.png" alt="FOCUS-ON" class="app-header-icon">
+                        <div class="app-header-info">
+                            <h1>FOCUS-ON</h1>
+                            <p class="tagline">Ambient soundscapes and focus music to boost your productivity and concentration. Find your flow state.</p>
+                            <span class="platform-badge">iOS</span>
+                            <br>
+                            <span class="coming-soon-badge">🎧 In Development</span>
+                        </div>
+                    </div>
+                    
+                    <div class="features-section">
+                        <h2>Planned Features</h2>
+                        <div class="features-grid">
+                            <div class="feature-card">
+                                <div class="feature-icon">🌧️</div>
+                                <h3>Ambient Sounds</h3>
+                                <p>Rain, thunder, ocean waves, forest sounds, coffee shop ambience, and more. Mix and match to create your perfect soundscape.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🎵</div>
+                                <h3>Focus Music</h3>
+                                <p>Curated lo-fi beats, binaural tones, and concentration-boosting music designed for deep work.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">⏱️</div>
+                                <h3>Pomodoro Timer</h3>
+                                <p>Built-in focus timer with customizable work and break intervals. Track your productivity over time.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 3DME Panel -->
+                <div class="app-panel" id="3dme">
+                    <div class="app-header">
+                        <img src="images/3dme-icon.png" alt="3DME" class="app-header-icon">
+                        <div class="app-header-info">
+                            <h1>3DME</h1>
+                            <p class="tagline">Convert your 2D photos into stunning stereoscopic 3D images using AI-powered depth estimation. For Apple TV 4K and polarized 3D TVs.</p>
+                            <span class="platform-badge">tvOS · Apple TV 4K</span>
+                            <br>
+                            <span class="coming-soon-badge">🎬 Coming Soon</span>
+                        </div>
+                    </div>
+                    
+                    <div class="features-section">
+                        <h2>Technology</h2>
+                        <div class="features-grid">
+                            <div class="feature-card">
+                                <div class="feature-icon">🧠</div>
+                                <h3>AI Depth Estimation</h3>
+                                <p>Powered by Depth Anything V2 – state-of-the-art AI that analyzes your 2D photos and generates accurate depth maps.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">⚡</div>
+                                <h3>Metal Compute Shaders</h3>
+                                <p>Hardware-accelerated DIBR (Depth Image Based Rendering) using Apple's Metal framework for real-time performance.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">📺</div>
+                                <h3>Side-by-Side 3D</h3>
+                                <p>Outputs stereoscopic Side-by-Side images compatible with most polarized 3D TVs. Experience your memories in 3D.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
     
-    <footer>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="imprint.html">Imprint</a>
-        <a href="mailto:hello@zume.studio">Contact</a>
-        <p class="copyright">© 2026 ZUME Studio. All rights reserved.</p>
-    </footer>
+    <script>
+        // App Navigation
+        const navItems = document.querySelectorAll('.app-nav-item');
+        const panels = document.querySelectorAll('.app-panel');
+        
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const appId = item.dataset.app;
+                
+                // Update nav active state
+                navItems.forEach(nav => nav.classList.remove('active'));
+                item.classList.add('active');
+                
+                // Show corresponding panel
+                panels.forEach(panel => panel.classList.remove('active'));
+                document.getElementById(appId).classList.add('active');
+            });
+        });
+        
+        // Show ZUME by default on load (first app)
+        document.querySelector('[data-app="zume"]').click();
+    </script>
 </body>
 </html>
