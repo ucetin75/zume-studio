@@ -38,7 +38,7 @@
         
         /* Sidebar */
         .sidebar {
-            width: 120px;
+            width: 140px;
             background: var(--bg-sidebar);
             border-right: 1px solid var(--border-color);
             display: flex;
@@ -54,7 +54,7 @@
         }
         
         .logo img {
-            width: 90px;
+            width: 110px;
             height: auto;
         }
         
@@ -96,20 +96,20 @@
         }
         
         .app-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 16px;
+            width: 80px;
+            height: 80px;
+            border-radius: 18px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
             transition: box-shadow 0.3s ease;
             object-fit: cover;
         }
         
-        /* Special handling for 3DME wider icon */
+        /* Special handling for 3DME wider icon - same HEIGHT as others */
         .app-nav-item.wide-icon .app-icon {
             width: auto;
-            height: 55px;
-            max-width: 85px;
-            border-radius: 12px;
+            height: 80px;
+            max-width: 120px;
+            border-radius: 14px;
         }
         
         .app-nav-item:hover .app-icon {
@@ -245,9 +245,12 @@
         }
         
         .app-header-info h1 {
-            font-size: 3rem;
-            font-weight: 800;
+            font-family: "Phosphate", "Impact", "Arial Black", sans-serif;
+            font-size: 3.5rem;
+            font-weight: 400;
             margin-bottom: 8px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
         
         .app-header-info .tagline {
@@ -281,6 +284,22 @@
         .app-store-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+        
+        .app-store-badge {
+            display: inline-block;
+            margin-top: 20px;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        
+        .app-store-badge img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .app-store-badge:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
         }
         
         .coming-soon-badge {
@@ -397,8 +416,12 @@
         
         /* Legal Pages (Privacy/Imprint) */
         .legal-panel h1 {
-            font-size: 2.5rem;
+            font-family: "Phosphate", "Impact", "Arial Black", sans-serif;
+            font-size: 3rem;
+            font-weight: 400;
             margin-bottom: 30px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
         
         .legal-panel h2 {
@@ -441,6 +464,131 @@
             margin: 50px 0;
         }
         
+        /* Privacy Header with Language Switch */
+        .privacy-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .privacy-header h1 {
+            margin-bottom: 0;
+        }
+        
+        .language-switch {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+        
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+        }
+        
+        .lang-btn.active {
+            background: rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+            color: #fff;
+        }
+        
+        /* Privacy Tabs */
+        .privacy-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .privacy-tab {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+        
+        .privacy-tab:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+        }
+        
+        .privacy-tab.active {
+            background: #667eea;
+            border-color: #667eea;
+            color: #fff;
+        }
+        
+        .privacy-content {
+            display: none;
+        }
+        
+        .privacy-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .privacy-summary {
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .privacy-summary h3 {
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+        
+        .privacy-summary p {
+            margin: 0;
+            color: var(--text-primary);
+        }
+        
+        .no-collect-list {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .no-collect-list li {
+            padding: 8px 0;
+        }
+        
+        .legal-panel h3 {
+            font-size: 1.1rem;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .legal-panel .tagline {
+            margin-top: 40px;
+            padding: 20px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            color: #667eea;
+        }
+        
         /* Welcome Panel */
         .welcome-panel {
             display: flex;
@@ -452,9 +600,11 @@
         }
         
         .welcome-panel h1 {
-            font-size: 3rem;
-            font-weight: 800;
+            font-family: "Phosphate", "Impact", "Arial Black", sans-serif;
+            font-size: 3.5rem;
+            font-weight: 400;
             margin-bottom: 20px;
+            letter-spacing: 2px;
         }
         
         .welcome-panel h1 .highlight {
@@ -491,23 +641,23 @@
         /* Responsive */
         @media (max-width: 900px) {
             .sidebar {
-                width: 80px;
+                width: 100px;
                 padding: 15px 8px;
             }
             
             .logo img {
-                width: 60px;
+                width: 80px;
             }
             
             .app-icon {
-                width: 50px;
-                height: 50px;
-                border-radius: 12px;
+                width: 60px;
+                height: 60px;
+                border-radius: 14px;
             }
             
             .app-nav-item.wide-icon .app-icon {
-                height: 40px;
-                max-width: 65px;
+                height: 60px;
+                max-width: 90px;
             }
             
             .content {
@@ -627,7 +777,9 @@
                             <p class="tagline">Smart Camera Tools – Mirror with Emotion Coach, Magnifier with OCR & Translation, DailyPhoto with Time-Lapse.</p>
                             <span class="platform-badge">iOS 17+</span>
                             <br>
-                            <a href="https://apps.apple.com/app/id6758212967" class="app-store-btn">🍎 Download on App Store</a>
+                            <a href="https://apps.apple.com/app/id6758212967" class="app-store-badge">
+                                <img src="Bilder_und _andere_Assets_für_Website/Download_on_App_Store/Black_lockup/SVG/Download_on_the_App_Store_Badge_DE_RGB_blk_092917.svg" alt="Download on the App Store">
+                            </a>
                         </div>
                     </div>
                     
@@ -834,126 +986,747 @@
                 
                 <!-- Privacy Panel -->
                 <div class="app-panel legal-panel" id="privacy">
-                    <h1>Privacy Policy</h1>
-                    <p><strong>Last updated: March 2026</strong></p>
-                    
-                    <h2>1. Introduction</h2>
-                    <p>We appreciate your interest in our apps. Protecting your privacy is very important to us. Below we inform you about how we handle your data.</p>
-                    
-                    <h2>2. Controller</h2>
-                    <div class="contact-box">
-                        <p>
-                            <strong>Ugur Cetin</strong><br>
-                            Bostonring 41/4<br>
-                            71686 Remseck am Neckar<br>
-                            Germany<br><br>
-                            Email: <a href="mailto:ucetin.mail@icloud.com">ucetin.mail@icloud.com</a>
-                        </p>
+                    <div class="privacy-header">
+                        <h1>Privacy Policy</h1>
+                        <div class="language-switch">
+                            <button class="lang-btn active" data-lang="en">🇬🇧 EN</button>
+                            <button class="lang-btn" data-lang="de">🇩🇪 DE</button>
+                        </div>
                     </div>
                     
-                    <h2>3. What data do our apps collect?</h2>
-                    <p><strong>In short: Our apps do not collect any personal data.</strong></p>
-                    <p>All features work completely locally on your device:</p>
-                    <ul>
-                        <li><strong>Camera:</strong> Used only for live display. No images are stored or transmitted without your consent.</li>
-                        <li><strong>Photos:</strong> Images are stored exclusively in your local photo library.</li>
-                        <li><strong>AI Features:</strong> All AI analysis runs entirely on your device (Core ML). No images leave your device.</li>
-                        <li><strong>OCR & Translation:</strong> Uses iOS native APIs and processes data locally.</li>
-                    </ul>
+                    <!-- App Tabs -->
+                    <div class="privacy-tabs">
+                        <button class="privacy-tab active" data-privacy-app="general">All Apps</button>
+                        <button class="privacy-tab" data-privacy-app="zume">ZUME</button>
+                        <button class="privacy-tab" data-privacy-app="paranoid">PARANOID</button>
+                        <button class="privacy-tab" data-privacy-app="cryptor">CRYPTOR</button>
+                        <button class="privacy-tab" data-privacy-app="3dme">3DME</button>
+                    </div>
                     
-                    <h2>4. No data transfer to third parties</h2>
-                    <p>Our apps do not transfer data to external servers, analytics services, or advertising providers. There are:</p>
-                    <ul>
-                        <li>No tracking tools (like Google Analytics or Firebase)</li>
-                        <li>No advertising</li>
-                        <li>No social media integration</li>
-                        <li>No cloud synchronization</li>
-                    </ul>
+                    <!-- ==================== ENGLISH CONTENT ==================== -->
+                    <div class="lang-content" data-lang="en">
                     
-                    <h2>5. In-App Purchases</h2>
-                    <p>If you make an in-app purchase, the transaction is handled entirely by Apple via the App Store. We do not receive any personal payment data from Apple.</p>
+                    <!-- General Privacy (All Apps) -->
+                    <div class="privacy-content active" id="privacy-general">
+                        <p><strong>Last updated: March 2026</strong></p>
+                        
+                        <div class="privacy-summary">
+                            <h3>🔒 Summary</h3>
+                            <p>Your photos and data stay on your device. We do not collect any personal data and do not send anything to external servers.</p>
+                        </div>
+                        
+                        <h2>1. Responsible Party</h2>
+                        <div class="contact-box">
+                            <p>
+                                <strong>Ugur Cetin</strong><br>
+                                Bostonring 41/4<br>
+                                71686 Remseck am Neckar<br>
+                                Germany<br><br>
+                                Email: <a href="mailto:ucetin.mail@icloud.com">ucetin.mail@icloud.com</a>
+                            </p>
+                        </div>
+                        
+                        <h2>2. Data We Do NOT Collect</h2>
+                        <ul class="no-collect-list">
+                            <li>❌ No personal data (name, email, etc.)</li>
+                            <li>❌ No photos are uploaded</li>
+                            <li>❌ No tracking or analytics tools</li>
+                            <li>❌ No advertising</li>
+                            <li>❌ No sharing with third parties</li>
+                        </ul>
+                        
+                        <h2>3. Data Storage</h2>
+                        <p>All data created by our apps is stored exclusively on your device:</p>
+                        <ul>
+                            <li><strong>Photos:</strong> In Photo Library or app container</li>
+                            <li><strong>Settings:</strong> In local app settings</li>
+                            <li><strong>App Data:</strong> Locally in app container</li>
+                        </ul>
+                        
+                        <h2>4. In-App Purchases</h2>
+                        <p>If you make an in-app purchase, the purchase is processed through Apple's App Store. We do not receive any payment information.</p>
+                        
+                        <h2>5. Third-Party Services</h2>
+                        <p>Our apps exclusively use Apple's own frameworks. <strong>No third-party SDKs</strong> for tracking, analytics, or advertising are used.</p>
+                        
+                        <h2>6. Your Rights</h2>
+                        <p>You have the right to:</p>
+                        <ul>
+                            <li>Delete the app (all local data will be removed)</li>
+                            <li>Revoke permissions in iOS Settings</li>
+                        </ul>
+                        
+                        <h2>7. Contact</h2>
+                        <p>For privacy questions, please contact us at:<br>
+                        <a href="mailto:ucetin.mail@icloud.com">ucetin.mail@icloud.com</a></p>
+                    </div>
                     
-                    <h2>6. Permissions</h2>
-                    <p>Our apps may require the following permissions:</p>
-                    <ul>
-                        <li><strong>Camera:</strong> For camera-based features</li>
-                        <li><strong>Photo Library:</strong> For saving and loading photos</li>
-                        <li><strong>Notifications (optional):</strong> For reminders</li>
-                    </ul>
-                    <p>You can revoke these permissions at any time in iOS Settings.</p>
+                    <!-- ZUME Privacy -->
+                    <div class="privacy-content" id="privacy-zume">
+                        <p><strong>Last updated: March 2026</strong></p>
+                        
+                        <div class="privacy-summary">
+                            <h3>🔒 Summary</h3>
+                            <p>Your photos and data stay on your device. We do not collect any personal data and do not send anything to external servers.</p>
+                        </div>
+                        
+                        <h2>1. Responsible Party</h2>
+                        <div class="contact-box">
+                            <p>
+                                <strong>Ugur Cetin</strong><br>
+                                Bostonring 41/4<br>
+                                71686 Remseck am Neckar<br>
+                                Germany<br><br>
+                                Email: <a href="mailto:ucetin.mail@icloud.com">ucetin.mail@icloud.com</a>
+                            </p>
+                        </div>
+                        
+                        <h2>2. What Data is Processed?</h2>
+                        
+                        <h3>📷 Camera Access</h3>
+                        <ul>
+                            <li>The app requires camera access for all three modes</li>
+                            <li>Photos are stored <strong>only locally on your device</strong></li>
+                            <li><strong>No images are transmitted to servers</strong></li>
+                        </ul>
+                        
+                        <h3>🖼️ Photo Library</h3>
+                        <ul>
+                            <li>The app can save photos to your photo library</li>
+                            <li>This only happens with your permission</li>
+                            <li>Photos never leave your device</li>
+                        </ul>
+                        
+                        <h3>👤 Face Detection</h3>
+                        <ul>
+                            <li>Uses Apple's Vision Framework</li>
+                            <li>All processing happens <strong>locally on your device</strong></li>
+                            <li>No biometric data is stored or transmitted</li>
+                        </ul>
+                        
+                        <h3>😊 Emotion Recognition (Coach)</h3>
+                        <ul>
+                            <li>Uses Apple's ARKit</li>
+                            <li>Analysis happens <strong>in real-time on your device</strong></li>
+                            <li>No emotion data is stored</li>
+                        </ul>
+                        
+                        <h3>⭐ Celebrity Match</h3>
+                        <ul>
+                            <li>Comparison is done using a local ML model</li>
+                            <li>Your photo is <strong>not sent to any server</strong></li>
+                            <li>The celebrity database is integrated in the app</li>
+                        </ul>
+                        
+                        <h3>🔍 OCR and Translation (Magnifier Mode)</h3>
+                        <ul>
+                            <li>Text recognition uses Apple's Vision Framework</li>
+                            <li>Translation uses Apple's Translation API (iOS 17+)</li>
+                            <li>All processing happens <strong>on device</strong></li>
+                        </ul>
+                        
+                        <h3>🌤️ Location / Weather (optional)</h3>
+                        <ul>
+                            <li>The app can optionally use your location for weather data</li>
+                            <li>This only happens with your permission</li>
+                            <li>Uses Apple WeatherKit</li>
+                        </ul>
+                        
+                        <h3>📱 Motion Sensors</h3>
+                        <ul>
+                            <li>The app uses gyroscope data for visual effects</li>
+                            <li>This data is not stored</li>
+                        </ul>
+                        
+                        <h2>3. Data We Do NOT Collect</h2>
+                        <ul class="no-collect-list">
+                            <li>❌ No personal data (name, email, etc.)</li>
+                            <li>❌ No photos are uploaded</li>
+                            <li>❌ No tracking or analytics tools</li>
+                            <li>❌ No advertising</li>
+                            <li>❌ No sharing with third parties</li>
+                        </ul>
+                        
+                        <h2>4. Data Storage</h2>
+                        <p>All data created by the app is stored exclusively on your device:</p>
+                        <ul>
+                            <li><strong>Photos:</strong> In Photo Library or app container</li>
+                            <li><strong>Settings:</strong> In local app settings</li>
+                            <li><strong>DailyPhoto data:</strong> Locally in app container</li>
+                        </ul>
+                        
+                        <h2>5. In-App Purchases</h2>
+                        <p>If you purchase ZUME Pro, the purchase is processed through Apple's App Store. We do not receive any payment information.</p>
+                        
+                        <h2>6. Third-Party Services</h2>
+                        <p>The app exclusively uses Apple's own frameworks:</p>
+                        <ul>
+                            <li>Apple Vision Framework</li>
+                            <li>Apple ARKit</li>
+                            <li>Apple Translation API</li>
+                            <li>Apple WeatherKit</li>
+                            <li>Apple StoreKit</li>
+                        </ul>
+                        <p><strong>No third-party SDKs</strong> for tracking, analytics, or advertising are used.</p>
+                        
+                        <h2>7. Your Rights</h2>
+                        <p>You have the right to:</p>
+                        <ul>
+                            <li>Delete the app (all local data will be removed)</li>
+                            <li>Revoke permissions in iOS Settings</li>
+                        </ul>
+                        
+                        <h2>8. Contact</h2>
+                        <p>For privacy questions:<br>
+                        <a href="mailto:ucetin.mail@icloud.com">ucetin.mail@icloud.com</a></p>
+                        
+                        <p class="tagline"><strong>ZUME – The ME in ZUME is YOU!</strong></p>
+                    </div>
                     
-                    <h2>7. Data Security</h2>
-                    <p>Since all data remains locally on your device, you benefit from the security mechanisms of your iOS device, including encryption and Face ID/Touch ID.</p>
+                    <!-- PARANOID Privacy -->
+                    <div class="privacy-content" id="privacy-paranoid">
+                        <p><strong>Last updated: March 2026</strong></p>
+                        
+                        <div class="privacy-summary">
+                            <h3>🔒 Summary</h3>
+                            <p>PARANOID is a local multiplayer game. We do not collect any personal data.</p>
+                        </div>
+                        
+                        <h2>1. Responsible Party</h2>
+                        <div class="contact-box">
+                            <p>
+                                <strong>Ugur Cetin</strong><br>
+                                Bostonring 41/4<br>
+                                71686 Remseck am Neckar<br>
+                                Germany<br><br>
+                                Email: <a href="mailto:ucetin.mail@icloud.com">ucetin.mail@icloud.com</a>
+                            </p>
+                        </div>
+                        
+                        <h2>2. What Data is Processed?</h2>
+                        
+                        <h3>🎮 Game Data</h3>
+                        <ul>
+                            <li>Player names entered during gameplay are <strong>not stored permanently</strong></li>
+                            <li>Game sessions are temporary and local</li>
+                            <li>No game data is transmitted to servers</li>
+                        </ul>
+                        
+                        <h3>📡 Multiplayer (Local Network)</h3>
+                        <ul>
+                            <li>Multiplayer uses local network (WiFi/Bluetooth)</li>
+                            <li>No data is sent to external servers</li>
+                            <li>All communication happens directly between devices</li>
+                        </ul>
+                        
+                        <h2>3. Data We Do NOT Collect</h2>
+                        <ul class="no-collect-list">
+                            <li>❌ No personal data</li>
+                            <li>❌ No tracking or analytics</li>
+                            <li>❌ No advertising</li>
+                            <li>❌ No cloud storage</li>
+                        </ul>
+                        
+                        <h2>4. Contact</h2>
+                        <p>For privacy questions:<br>
+                        <a href="mailto:ucetin.mail@icloud.com">ucetin.mail@icloud.com</a></p>
+                    </div>
                     
-                    <h2>8. Your Rights</h2>
-                    <p>Since we do not collect any personal data, there is no data stored with us that you would need to access, correct, or delete. All data is exclusively on your device.</p>
+                    <!-- CRYPTOR Privacy -->
+                    <div class="privacy-content" id="privacy-cryptor">
+                        <p><strong>Last updated: March 2026</strong></p>
+                        
+                        <div class="privacy-summary">
+                            <h3>🔒 Summary</h3>
+                            <p>CRYPTOR stores your portfolio data locally on your device. We do not have access to your holdings or financial data.</p>
+                        </div>
+                        
+                        <h2>1. Responsible Party</h2>
+                        <div class="contact-box">
+                            <p>
+                                <strong>Ugur Cetin</strong><br>
+                                Bostonring 41/4<br>
+                                71686 Remseck am Neckar<br>
+                                Germany<br><br>
+                                Email: <a href="mailto:ucetin.mail@icloud.com">ucetin.mail@icloud.com</a>
+                            </p>
+                        </div>
+                        
+                        <h2>2. What Data is Processed?</h2>
+                        
+                        <h3>💰 Portfolio Data</h3>
+                        <ul>
+                            <li>Your portfolio holdings are stored <strong>locally on your device</strong></li>
+                            <li>We do not have access to your financial data</li>
+                            <li>No wallet connections or private keys are stored</li>
+                        </ul>
+                        
+                        <h3>📊 Price Data</h3>
+                        <ul>
+                            <li>Crypto prices are fetched from public APIs</li>
+                            <li>No personal data is sent with these requests</li>
+                        </ul>
+                        
+                        <h2>3. Data We Do NOT Collect</h2>
+                        <ul class="no-collect-list">
+                            <li>❌ No wallet addresses</li>
+                            <li>❌ No private keys</li>
+                            <li>❌ No transaction history</li>
+                            <li>❌ No tracking or analytics</li>
+                        </ul>
+                        
+                        <h2>4. Contact</h2>
+                        <p>For privacy questions:<br>
+                        <a href="mailto:ucetin.mail@icloud.com">ucetin.mail@icloud.com</a></p>
+                    </div>
                     
-                    <h2>9. Contact</h2>
-                    <p>For privacy questions, please contact us at:<br>
-                    <a href="mailto:ucetin.mail@icloud.com">ucetin.mail@icloud.com</a></p>
+                    <!-- 3DME Privacy -->
+                    <div class="privacy-content" id="privacy-3dme">
+                        <p><strong>Last updated: March 2026</strong></p>
+                        
+                        <div class="privacy-summary">
+                            <h3>🔒 Summary</h3>
+                            <p>3DME processes your photos entirely on your Apple TV. No images are uploaded to servers.</p>
+                        </div>
+                        
+                        <h2>1. Responsible Party</h2>
+                        <div class="contact-box">
+                            <p>
+                                <strong>Ugur Cetin</strong><br>
+                                Bostonring 41/4<br>
+                                71686 Remseck am Neckar<br>
+                                Germany<br><br>
+                                Email: <a href="mailto:ucetin.mail@icloud.com">ucetin.mail@icloud.com</a>
+                            </p>
+                        </div>
+                        
+                        <h2>2. What Data is Processed?</h2>
+                        
+                        <h3>🖼️ Photo Processing</h3>
+                        <ul>
+                            <li>Photos are loaded from your iCloud Photo Library</li>
+                            <li>All 3D conversion happens <strong>locally on your Apple TV</strong></li>
+                            <li>AI depth estimation runs on-device using Core ML</li>
+                            <li><strong>No images are sent to external servers</strong></li>
+                        </ul>
+                        
+                        <h3>💾 Output Images</h3>
+                        <ul>
+                            <li>Converted 3D images can be saved to your Photo Library</li>
+                            <li>All data stays on your device/iCloud</li>
+                        </ul>
+                        
+                        <h2>3. Data We Do NOT Collect</h2>
+                        <ul class="no-collect-list">
+                            <li>❌ No photos are uploaded</li>
+                            <li>❌ No tracking or analytics</li>
+                            <li>❌ No advertising</li>
+                        </ul>
+                        
+                        <h2>4. Contact</h2>
+                        <p>For privacy questions:<br>
+                        <a href="mailto:ucetin.mail@icloud.com">ucetin.mail@icloud.com</a></p>
+                    </div>
+                    
+                    </div><!-- End English Content -->
+                    
+                    <!-- ==================== GERMAN CONTENT ==================== -->
+                    <div class="lang-content" data-lang="de" style="display: none;">
+                    
+                    <!-- General Privacy (All Apps) - German -->
+                    <div class="privacy-content active" id="privacy-general-de">
+                        <p><strong>Stand: März 2026</strong></p>
+                        
+                        <div class="privacy-summary">
+                            <h3>🔒 Kurzfassung</h3>
+                            <p>Deine Fotos und Daten bleiben auf deinem Gerät. Wir sammeln keine persönlichen Daten und senden nichts an externe Server.</p>
+                        </div>
+                        
+                        <h2>1. Verantwortlicher</h2>
+                        <div class="contact-box">
+                            <p>
+                                <strong>Ugur Cetin</strong><br>
+                                Bostonring 41/4<br>
+                                71686 Remseck am Neckar<br>
+                                Deutschland<br><br>
+                                E-Mail: <a href="mailto:ucetin.mail@icloud.com">ucetin.mail@icloud.com</a>
+                            </p>
+                        </div>
+                        
+                        <h2>2. Daten, die wir NICHT sammeln</h2>
+                        <ul class="no-collect-list">
+                            <li>❌ Keine persönlichen Daten (Name, E-Mail, etc.)</li>
+                            <li>❌ Keine Fotos werden hochgeladen</li>
+                            <li>❌ Keine Tracking- oder Analyse-Tools</li>
+                            <li>❌ Keine Werbung</li>
+                            <li>❌ Keine Weitergabe an Dritte</li>
+                        </ul>
+                        
+                        <h2>3. Datenspeicherung</h2>
+                        <p>Alle von unseren Apps erstellten Daten werden ausschließlich auf deinem Gerät gespeichert:</p>
+                        <ul>
+                            <li><strong>Fotos:</strong> In der Foto-Mediathek oder im App-Container</li>
+                            <li><strong>Einstellungen:</strong> In den lokalen App-Einstellungen</li>
+                            <li><strong>App-Daten:</strong> Lokal im App-Container</li>
+                        </ul>
+                        
+                        <h2>4. In-App-Käufe</h2>
+                        <p>Wenn du einen In-App-Kauf tätigst, wird der Kauf über Apples App Store abgewickelt. Wir erhalten keine Zahlungsinformationen.</p>
+                        
+                        <h2>5. Drittanbieter-Dienste</h2>
+                        <p>Unsere Apps nutzen ausschließlich Apple-eigene Frameworks. <strong>Keine Drittanbieter-SDKs</strong> für Tracking, Analyse oder Werbung werden verwendet.</p>
+                        
+                        <h2>6. Deine Rechte</h2>
+                        <p>Du hast das Recht:</p>
+                        <ul>
+                            <li>Die App zu löschen (alle lokalen Daten werden entfernt)</li>
+                            <li>Berechtigungen in den iOS-Einstellungen zu widerrufen</li>
+                        </ul>
+                        
+                        <h2>7. Kontakt</h2>
+                        <p>Bei Fragen zum Datenschutz:<br>
+                        <a href="mailto:ucetin.mail@icloud.com">ucetin.mail@icloud.com</a></p>
+                    </div>
+                    
+                    <!-- ZUME Privacy - German -->
+                    <div class="privacy-content" id="privacy-zume-de">
+                        <p><strong>Stand: März 2026</strong></p>
+                        
+                        <div class="privacy-summary">
+                            <h3>🔒 Kurzfassung</h3>
+                            <p>Deine Fotos und Daten bleiben auf deinem Gerät. Wir sammeln keine persönlichen Daten und senden nichts an externe Server.</p>
+                        </div>
+                        
+                        <h2>1. Verantwortlicher</h2>
+                        <div class="contact-box">
+                            <p>
+                                <strong>Ugur Cetin</strong><br>
+                                Bostonring 41/4<br>
+                                71686 Remseck am Neckar<br>
+                                Deutschland<br><br>
+                                E-Mail: <a href="mailto:ucetin.mail@icloud.com">ucetin.mail@icloud.com</a>
+                            </p>
+                        </div>
+                        
+                        <h2>2. Welche Daten werden verarbeitet?</h2>
+                        
+                        <h3>📷 Kamera-Zugriff</h3>
+                        <ul>
+                            <li>Die App benötigt Zugriff auf die Kamera für alle drei Modi</li>
+                            <li>Fotos werden <strong>nur lokal auf deinem Gerät</strong> gespeichert</li>
+                            <li><strong>Es werden keine Bilder an Server übertragen</strong></li>
+                        </ul>
+                        
+                        <h3>🖼️ Foto-Mediathek</h3>
+                        <ul>
+                            <li>Die App kann Fotos in deiner Foto-Mediathek speichern</li>
+                            <li>Dies geschieht nur mit deiner Erlaubnis</li>
+                            <li>Fotos verlassen dein Gerät nicht</li>
+                        </ul>
+                        
+                        <h3>👤 Gesichtserkennung</h3>
+                        <ul>
+                            <li>Nutzt Apples Vision Framework</li>
+                            <li>Alle Berechnungen erfolgen <strong>lokal auf deinem Gerät</strong></li>
+                            <li>Keine biometrischen Daten werden gespeichert oder übertragen</li>
+                        </ul>
+                        
+                        <h3>😊 Emotions-Erkennung (Coach)</h3>
+                        <ul>
+                            <li>Nutzt Apples ARKit</li>
+                            <li>Die Analyse erfolgt <strong>in Echtzeit auf deinem Gerät</strong></li>
+                            <li>Es werden keine Emotionsdaten gespeichert</li>
+                        </ul>
+                        
+                        <h3>⭐ Celebrity-Match / Promi-Vergleich</h3>
+                        <ul>
+                            <li>Der Vergleich erfolgt durch ein lokales ML-Modell</li>
+                            <li>Dein Foto wird <strong>nicht an Server gesendet</strong></li>
+                            <li>Die Promi-Datenbank ist in der App integriert</li>
+                        </ul>
+                        
+                        <h3>🔍 OCR und Übersetzung (Lupen-Modus)</h3>
+                        <ul>
+                            <li>Texterkennung nutzt Apples Vision Framework</li>
+                            <li>Übersetzung nutzt Apples Translation API (iOS 17+)</li>
+                            <li>Alle Verarbeitung erfolgt <strong>auf dem Gerät</strong></li>
+                        </ul>
+                        
+                        <h3>🌤️ Standort / Wetter (optional)</h3>
+                        <ul>
+                            <li>Die App kann optional deinen Standort für Wetterdaten nutzen</li>
+                            <li>Dies geschieht nur mit deiner Erlaubnis</li>
+                            <li>Nutzt Apple WeatherKit</li>
+                        </ul>
+                        
+                        <h3>📱 Bewegungssensoren</h3>
+                        <ul>
+                            <li>Die App nutzt Gyroscope-Daten für visuelle Effekte</li>
+                            <li>Diese Daten werden nicht gespeichert</li>
+                        </ul>
+                        
+                        <h2>3. Daten, die wir NICHT sammeln</h2>
+                        <ul class="no-collect-list">
+                            <li>❌ Keine persönlichen Daten (Name, E-Mail, etc.)</li>
+                            <li>❌ Keine Fotos werden hochgeladen</li>
+                            <li>❌ Keine Tracking- oder Analyse-Tools</li>
+                            <li>❌ Keine Werbung</li>
+                            <li>❌ Keine Weitergabe an Dritte</li>
+                        </ul>
+                        
+                        <h2>4. Datenspeicherung</h2>
+                        <p>Alle von der App erstellten Daten werden ausschließlich auf deinem Gerät gespeichert:</p>
+                        <ul>
+                            <li><strong>Fotos:</strong> In der Foto-Mediathek oder im App-Container</li>
+                            <li><strong>Einstellungen:</strong> In den lokalen App-Einstellungen</li>
+                            <li><strong>DailyPhoto-Daten:</strong> Lokal im App-Container</li>
+                        </ul>
+                        
+                        <h2>5. In-App-Käufe</h2>
+                        <p>Wenn du ZUME Pro kaufst, wird der Kauf über Apples App Store abgewickelt. Wir erhalten keine Zahlungsinformationen.</p>
+                        
+                        <h2>6. Drittanbieter-Dienste</h2>
+                        <p>Die App nutzt ausschließlich Apple-eigene Frameworks:</p>
+                        <ul>
+                            <li>Apple Vision Framework</li>
+                            <li>Apple ARKit</li>
+                            <li>Apple Translation API</li>
+                            <li>Apple WeatherKit</li>
+                            <li>Apple StoreKit</li>
+                        </ul>
+                        <p><strong>Es werden keine Drittanbieter-SDKs</strong> für Tracking, Analyse oder Werbung verwendet.</p>
+                        
+                        <h2>7. Deine Rechte</h2>
+                        <p>Du hast jederzeit das Recht:</p>
+                        <ul>
+                            <li>Die App zu löschen (alle lokalen Daten werden entfernt)</li>
+                            <li>Berechtigungen in den iOS-Einstellungen zu widerrufen</li>
+                        </ul>
+                        
+                        <h2>8. Kontakt</h2>
+                        <p>Bei Fragen zum Datenschutz:<br>
+                        <a href="mailto:ucetin.mail@icloud.com">ucetin.mail@icloud.com</a></p>
+                        
+                        <p class="tagline"><strong>ZUME – The ME in ZUME is YOU!</strong></p>
+                    </div>
+                    
+                    <!-- PARANOID Privacy - German -->
+                    <div class="privacy-content" id="privacy-paranoid-de">
+                        <p><strong>Stand: März 2026</strong></p>
+                        
+                        <div class="privacy-summary">
+                            <h3>🔒 Kurzfassung</h3>
+                            <p>PARANOID ist ein lokales Multiplayer-Spiel. Wir sammeln keine persönlichen Daten.</p>
+                        </div>
+                        
+                        <h2>1. Verantwortlicher</h2>
+                        <div class="contact-box">
+                            <p>
+                                <strong>Ugur Cetin</strong><br>
+                                Bostonring 41/4<br>
+                                71686 Remseck am Neckar<br>
+                                Deutschland<br><br>
+                                E-Mail: <a href="mailto:ucetin.mail@icloud.com">ucetin.mail@icloud.com</a>
+                            </p>
+                        </div>
+                        
+                        <h2>2. Welche Daten werden verarbeitet?</h2>
+                        
+                        <h3>🎮 Spieldaten</h3>
+                        <ul>
+                            <li>Spielernamen, die während des Spiels eingegeben werden, werden <strong>nicht dauerhaft gespeichert</strong></li>
+                            <li>Spielsitzungen sind temporär und lokal</li>
+                            <li>Keine Spieldaten werden an Server übertragen</li>
+                        </ul>
+                        
+                        <h3>📡 Multiplayer (Lokales Netzwerk)</h3>
+                        <ul>
+                            <li>Multiplayer nutzt das lokale Netzwerk (WLAN/Bluetooth)</li>
+                            <li>Keine Daten werden an externe Server gesendet</li>
+                            <li>Alle Kommunikation erfolgt direkt zwischen den Geräten</li>
+                        </ul>
+                        
+                        <h2>3. Daten, die wir NICHT sammeln</h2>
+                        <ul class="no-collect-list">
+                            <li>❌ Keine persönlichen Daten</li>
+                            <li>❌ Kein Tracking oder Analyse</li>
+                            <li>❌ Keine Werbung</li>
+                            <li>❌ Keine Cloud-Speicherung</li>
+                        </ul>
+                        
+                        <h2>4. Kontakt</h2>
+                        <p>Bei Fragen zum Datenschutz:<br>
+                        <a href="mailto:ucetin.mail@icloud.com">ucetin.mail@icloud.com</a></p>
+                    </div>
+                    
+                    <!-- CRYPTOR Privacy - German -->
+                    <div class="privacy-content" id="privacy-cryptor-de">
+                        <p><strong>Stand: März 2026</strong></p>
+                        
+                        <div class="privacy-summary">
+                            <h3>🔒 Kurzfassung</h3>
+                            <p>CRYPTOR speichert deine Portfolio-Daten lokal auf deinem Gerät. Wir haben keinen Zugriff auf deine Bestände oder Finanzdaten.</p>
+                        </div>
+                        
+                        <h2>1. Verantwortlicher</h2>
+                        <div class="contact-box">
+                            <p>
+                                <strong>Ugur Cetin</strong><br>
+                                Bostonring 41/4<br>
+                                71686 Remseck am Neckar<br>
+                                Deutschland<br><br>
+                                E-Mail: <a href="mailto:ucetin.mail@icloud.com">ucetin.mail@icloud.com</a>
+                            </p>
+                        </div>
+                        
+                        <h2>2. Welche Daten werden verarbeitet?</h2>
+                        
+                        <h3>💰 Portfolio-Daten</h3>
+                        <ul>
+                            <li>Deine Portfolio-Bestände werden <strong>lokal auf deinem Gerät</strong> gespeichert</li>
+                            <li>Wir haben keinen Zugriff auf deine Finanzdaten</li>
+                            <li>Keine Wallet-Verbindungen oder Private Keys werden gespeichert</li>
+                        </ul>
+                        
+                        <h3>📊 Preisdaten</h3>
+                        <ul>
+                            <li>Krypto-Preise werden von öffentlichen APIs abgerufen</li>
+                            <li>Keine persönlichen Daten werden mit diesen Anfragen gesendet</li>
+                        </ul>
+                        
+                        <h2>3. Daten, die wir NICHT sammeln</h2>
+                        <ul class="no-collect-list">
+                            <li>❌ Keine Wallet-Adressen</li>
+                            <li>❌ Keine Private Keys</li>
+                            <li>❌ Keine Transaktionshistorie</li>
+                            <li>❌ Kein Tracking oder Analyse</li>
+                        </ul>
+                        
+                        <h2>4. Kontakt</h2>
+                        <p>Bei Fragen zum Datenschutz:<br>
+                        <a href="mailto:ucetin.mail@icloud.com">ucetin.mail@icloud.com</a></p>
+                    </div>
+                    
+                    <!-- 3DME Privacy - German -->
+                    <div class="privacy-content" id="privacy-3dme-de">
+                        <p><strong>Stand: März 2026</strong></p>
+                        
+                        <div class="privacy-summary">
+                            <h3>🔒 Kurzfassung</h3>
+                            <p>3DME verarbeitet deine Fotos vollständig auf deinem Apple TV. Keine Bilder werden auf Server hochgeladen.</p>
+                        </div>
+                        
+                        <h2>1. Verantwortlicher</h2>
+                        <div class="contact-box">
+                            <p>
+                                <strong>Ugur Cetin</strong><br>
+                                Bostonring 41/4<br>
+                                71686 Remseck am Neckar<br>
+                                Deutschland<br><br>
+                                E-Mail: <a href="mailto:ucetin.mail@icloud.com">ucetin.mail@icloud.com</a>
+                            </p>
+                        </div>
+                        
+                        <h2>2. Welche Daten werden verarbeitet?</h2>
+                        
+                        <h3>🖼️ Foto-Verarbeitung</h3>
+                        <ul>
+                            <li>Fotos werden aus deiner iCloud-Fotomediathek geladen</li>
+                            <li>Alle 3D-Konvertierungen erfolgen <strong>lokal auf deinem Apple TV</strong></li>
+                            <li>KI-Tiefenschätzung läuft auf dem Gerät mit Core ML</li>
+                            <li><strong>Keine Bilder werden an externe Server gesendet</strong></li>
+                        </ul>
+                        
+                        <h3>💾 Ausgabe-Bilder</h3>
+                        <ul>
+                            <li>Konvertierte 3D-Bilder können in deiner Foto-Mediathek gespeichert werden</li>
+                            <li>Alle Daten bleiben auf deinem Gerät/iCloud</li>
+                        </ul>
+                        
+                        <h2>3. Daten, die wir NICHT sammeln</h2>
+                        <ul class="no-collect-list">
+                            <li>❌ Keine Fotos werden hochgeladen</li>
+                            <li>❌ Kein Tracking oder Analyse</li>
+                            <li>❌ Keine Werbung</li>
+                        </ul>
+                        
+                        <h2>4. Kontakt</h2>
+                        <p>Bei Fragen zum Datenschutz:<br>
+                        <a href="mailto:ucetin.mail@icloud.com">ucetin.mail@icloud.com</a></p>
+                    </div>
+                    
+                    </div><!-- End German Content -->
                 </div>
                 
                 <!-- Imprint Panel -->
                 <div class="app-panel legal-panel" id="imprint">
-                    <h1>Imprint</h1>
-                    
-                    <h2>Information according to § 5 TMG</h2>
-                    <div class="contact-box">
-                        <p>
-                            <strong>Ugur Cetin</strong><br>
-                            Bostonring 41/4<br>
-                            71686 Remseck am Neckar<br>
-                            Germany
-                        </p>
+                    <div class="privacy-header">
+                        <h1 id="imprint-title">Imprint</h1>
+                        <div class="language-switch">
+                            <button class="lang-btn imprint-lang-btn active" data-lang="en">🇬🇧 EN</button>
+                            <button class="lang-btn imprint-lang-btn" data-lang="de">🇩🇪 DE</button>
+                        </div>
                     </div>
                     
-                    <h2>Contact</h2>
-                    <p>Email: <a href="mailto:ucetin.mail@icloud.com">ucetin.mail@icloud.com</a></p>
-                    
-                    <h2>Responsible for content according to § 55 Abs. 2 RStV</h2>
-                    <p>
-                        Ugur Cetin<br>
-                        Bostonring 41/4<br>
-                        71686 Remseck am Neckar
-                    </p>
-                    
-                    <h2>EU Dispute Resolution</h2>
-                    <p>The European Commission provides a platform for online dispute resolution (OS): <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a></p>
-                    <p>Our email address can be found above in the imprint.</p>
-                    
-                    <h2>Consumer Dispute Resolution</h2>
-                    <p>We are not willing or obligated to participate in dispute resolution proceedings before a consumer arbitration board.</p>
-                    
-                    <hr>
-                    
-                    <h1>Impressum</h1>
-                    
-                    <h2>Angaben gemäß § 5 TMG</h2>
-                    <div class="contact-box">
+                    <!-- English Imprint -->
+                    <div class="imprint-content" data-lang="en">
+                        <h2>Information according to § 5 TMG</h2>
+                        <div class="contact-box">
+                            <p>
+                                <strong>Ugur Cetin</strong><br>
+                                Bostonring 41/4<br>
+                                71686 Remseck am Neckar<br>
+                                Germany
+                            </p>
+                        </div>
+                        
+                        <h2>Contact</h2>
+                        <p>Email: <a href="mailto:ucetin.mail@icloud.com">ucetin.mail@icloud.com</a></p>
+                        
+                        <h2>Responsible for content according to § 55 Abs. 2 RStV</h2>
                         <p>
-                            <strong>Ugur Cetin</strong><br>
+                            Ugur Cetin<br>
                             Bostonring 41/4<br>
-                            71686 Remseck am Neckar<br>
-                            Deutschland
+                            71686 Remseck am Neckar
                         </p>
+                        
+                        <h2>EU Dispute Resolution</h2>
+                        <p>The European Commission provides a platform for online dispute resolution (OS): <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a></p>
+                        <p>Our email address can be found above in the imprint.</p>
+                        
+                        <h2>Consumer Dispute Resolution</h2>
+                        <p>We are not willing or obligated to participate in dispute resolution proceedings before a consumer arbitration board.</p>
                     </div>
                     
-                    <h2>Kontakt</h2>
-                    <p>E-Mail: <a href="mailto:ucetin.mail@icloud.com">ucetin.mail@icloud.com</a></p>
-                    
-                    <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
-                    <p>
-                        Ugur Cetin<br>
-                        Bostonring 41/4<br>
-                        71686 Remseck am Neckar
-                    </p>
-                    
-                    <h2>EU-Streitschlichtung</h2>
-                    <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a></p>
-                    <p>Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
-                    
-                    <h2>Verbraucherstreitbeilegung / Universalschlichtungsstelle</h2>
-                    <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+                    <!-- German Imprint -->
+                    <div class="imprint-content" data-lang="de" style="display: none;">
+                        <h2>Angaben gemäß § 5 TMG</h2>
+                        <div class="contact-box">
+                            <p>
+                                <strong>Ugur Cetin</strong><br>
+                                Bostonring 41/4<br>
+                                71686 Remseck am Neckar<br>
+                                Deutschland
+                            </p>
+                        </div>
+                        
+                        <h2>Kontakt</h2>
+                        <p>E-Mail: <a href="mailto:ucetin.mail@icloud.com">ucetin.mail@icloud.com</a></p>
+                        
+                        <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+                        <p>
+                            Ugur Cetin<br>
+                            Bostonring 41/4<br>
+                            71686 Remseck am Neckar
+                        </p>
+                        
+                        <h2>EU-Streitschlichtung</h2>
+                        <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a></p>
+                        <p>Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
+                        
+                        <h2>Verbraucherstreitbeilegung / Universalschlichtungsstelle</h2>
+                        <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+                    </div>
                 </div>
             </div>
         </main>
@@ -1003,6 +1776,87 @@
         
         // Show ZUME by default on load
         document.querySelector('[data-app="zume"]').click();
+        
+        // Privacy Tabs & Language Switching
+        const privacyTabs = document.querySelectorAll('.privacy-tab');
+        const langBtns = document.querySelectorAll('.lang-btn');
+        let currentLang = 'en';
+        let currentPrivacyApp = 'general';
+        
+        function updatePrivacyContent() {
+            // Hide all privacy contents
+            document.querySelectorAll('.privacy-content').forEach(c => c.classList.remove('active'));
+            
+            // Show/hide language containers
+            document.querySelectorAll('.lang-content').forEach(container => {
+                if (container.dataset.lang === currentLang) {
+                    container.style.display = 'block';
+                } else {
+                    container.style.display = 'none';
+                }
+            });
+            
+            // Show the correct content for current app and language
+            const suffix = currentLang === 'de' ? '-de' : '';
+            const targetId = `privacy-${currentPrivacyApp}${suffix}`;
+            const targetEl = document.getElementById(targetId);
+            if (targetEl) {
+                targetEl.classList.add('active');
+            }
+        }
+        
+        // App tab click handlers
+        privacyTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                currentPrivacyApp = tab.dataset.privacyApp;
+                
+                // Update tab active state
+                privacyTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                updatePrivacyContent();
+            });
+        });
+        
+        // Language switch handlers
+        langBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                currentLang = btn.dataset.lang;
+                
+                // Update button active state
+                langBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                updatePrivacyContent();
+            });
+        });
+        
+        // Imprint Language Switch
+        const imprintLangBtns = document.querySelectorAll('.imprint-lang-btn');
+        const imprintContents = document.querySelectorAll('.imprint-content');
+        const imprintTitle = document.getElementById('imprint-title');
+        
+        imprintLangBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.dataset.lang;
+                
+                // Update button active state
+                imprintLangBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Update title
+                imprintTitle.textContent = lang === 'de' ? 'Impressum' : 'Imprint';
+                
+                // Show/hide content
+                imprintContents.forEach(content => {
+                    if (content.dataset.lang === lang) {
+                        content.style.display = 'block';
+                    } else {
+                        content.style.display = 'none';
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
