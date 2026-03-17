@@ -44,10 +44,13 @@
             display: flex;
             flex-direction: column;
             padding: 20px 15px;
+            flex-shrink: 0;
         }
         
         .logo {
-            margin-bottom: 40px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
         }
         
         .logo img {
@@ -55,36 +58,21 @@
             height: auto;
         }
         
-        .logo-text {
-            font-size: 1.1rem;
-            font-weight: 800;
-            line-height: 1.1;
-        }
-        
-        .logo-text .zume {
-            background: linear-gradient(135deg, #00d4ff, #7c3aed);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .logo-text .studio {
-            background: linear-gradient(135deg, #ff006e, #fb5607);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
         /* App Navigation */
         .app-nav {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
             flex: 1;
+            align-items: center;
         }
         
         .app-nav-item {
             position: relative;
             cursor: pointer;
             transition: transform 0.3s ease;
+            display: flex;
+            justify-content: center;
         }
         
         .app-nav-item:hover {
@@ -113,6 +101,15 @@
             border-radius: 16px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
             transition: box-shadow 0.3s ease;
+            object-fit: cover;
+        }
+        
+        /* Special handling for 3DME wider icon */
+        .app-nav-item.wide-icon .app-icon {
+            width: auto;
+            height: 55px;
+            max-width: 85px;
+            border-radius: 12px;
         }
         
         .app-nav-item:hover .app-icon {
@@ -122,7 +119,7 @@
         /* Tooltip */
         .tooltip {
             position: absolute;
-            left: 85px;
+            left: 95px;
             top: 50%;
             transform: translateY(-50%);
             background: rgba(30, 30, 30, 0.95);
@@ -150,7 +147,7 @@
         .app-nav-item:hover .tooltip {
             opacity: 1;
             visibility: visible;
-            left: 90px;
+            left: 100px;
         }
         
         .tooltip-name {
@@ -171,6 +168,7 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            min-width: 0;
         }
         
         /* Top Bar */
@@ -180,17 +178,22 @@
             align-items: center;
             padding: 20px 40px;
             border-bottom: 1px solid var(--border-color);
+            flex-shrink: 0;
         }
         
-        .topbar a {
+        .topbar-link {
             color: var(--text-secondary);
             text-decoration: none;
             font-size: 0.9rem;
             margin-left: 30px;
             transition: color 0.3s;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: inherit;
         }
         
-        .topbar a:hover {
+        .topbar-link:hover {
             color: var(--text-primary);
         }
         
@@ -219,7 +222,7 @@
         /* App Header */
         .app-header {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 30px;
             margin-bottom: 50px;
         }
@@ -229,6 +232,16 @@
             height: 120px;
             border-radius: 28px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        
+        /* Wide icon in header (3DME) */
+        .app-header-icon.wide {
+            width: auto;
+            height: 100px;
+            max-width: 180px;
+            border-radius: 20px;
         }
         
         .app-header-info h1 {
@@ -367,6 +380,52 @@
             border-radius: 20px;
         }
         
+        /* Legal Pages (Privacy/Imprint) */
+        .legal-panel h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+        
+        .legal-panel h2 {
+            font-size: 1.4rem;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+        
+        .legal-panel p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        .legal-panel ul {
+            margin: 15px 0 15px 25px;
+            color: var(--text-secondary);
+        }
+        
+        .legal-panel li {
+            margin-bottom: 8px;
+        }
+        
+        .legal-panel a {
+            color: #667eea;
+        }
+        
+        .legal-panel .contact-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+        
+        .legal-panel hr {
+            border: none;
+            border-top: 1px solid var(--border-color);
+            margin: 50px 0;
+        }
+        
         /* Welcome Panel */
         .welcome-panel {
             display: flex;
@@ -418,11 +477,11 @@
         @media (max-width: 900px) {
             .sidebar {
                 width: 80px;
-                padding: 15px 10px;
+                padding: 15px 8px;
             }
             
-            .logo-text {
-                font-size: 0.8rem;
+            .logo img {
+                width: 60px;
             }
             
             .app-icon {
@@ -431,17 +490,26 @@
                 border-radius: 12px;
             }
             
+            .app-nav-item.wide-icon .app-icon {
+                height: 40px;
+                max-width: 65px;
+            }
+            
             .content {
                 padding: 30px;
             }
             
             .app-header {
                 flex-direction: column;
-                text-align: center;
+                align-items: flex-start;
             }
             
             .app-header-info h1 {
                 font-size: 2rem;
+            }
+            
+            .tooltip {
+                display: none;
             }
         }
         
@@ -450,7 +518,7 @@
                 padding: 15px 20px;
             }
             
-            .topbar a {
+            .topbar-link {
                 margin-left: 15px;
                 font-size: 0.8rem;
             }
@@ -462,16 +530,13 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
-                <div class="logo-text">
-                    <span class="zume">ZUME</span><br>
-                    <span class="studio">STUDIO</span>
-                </div>
+                <img src="Bilder_und _andere_Assets_für_Website/ZUME_Studio_LOGO/ZUME_Studio_LOGO.003.png" alt="ZUME Studio">
             </div>
             
             <nav class="app-nav">
                 <!-- ZUME -->
-                <div class="app-nav-item active" data-app="zume" style="--app-color: #00d4aa;">
-                    <img src="images/zume-icon.png" alt="ZUME" class="app-icon">
+                <div class="app-nav-item" data-app="zume" style="--app-color: #00d4aa;">
+                    <img src="Bilder_und _andere_Assets_für_Website/Icons/ZUME_AppIcon-iOS-Default-1024x1024@1x.png" alt="ZUME" class="app-icon">
                     <div class="tooltip">
                         <div class="tooltip-name">ZUME</div>
                         <div class="tooltip-platform">iOS</div>
@@ -480,7 +545,7 @@
                 
                 <!-- PARANOID -->
                 <div class="app-nav-item" data-app="paranoid" style="--app-color: #e63946;">
-                    <img src="images/paranoid-icon.png" alt="PARANOID" class="app-icon">
+                    <img src="Bilder_und _andere_Assets_für_Website/Icons/PARANOID_App_Icon-iOS-Default-1024x1024@1x.png" alt="PARANOID" class="app-icon">
                     <div class="tooltip">
                         <div class="tooltip-name">PARANOID</div>
                         <div class="tooltip-platform">iOS · Multiplayer</div>
@@ -489,7 +554,7 @@
                 
                 <!-- CRYPTOR -->
                 <div class="app-nav-item" data-app="cryptor" style="--app-color: #f7931a;">
-                    <img src="images/cryptor-icon.png" alt="CRYPTOR" class="app-icon">
+                    <img src="Bilder_und _andere_Assets_für_Website/Icons/CRYPTOR-iOS-Default-1024x1024@1x.png" alt="CRYPTOR" class="app-icon">
                     <div class="tooltip">
                         <div class="tooltip-name">CRYPTOR</div>
                         <div class="tooltip-platform">iOS</div>
@@ -498,16 +563,16 @@
                 
                 <!-- FOCUS-ON -->
                 <div class="app-nav-item" data-app="focus" style="--app-color: #00d4aa;">
-                    <img src="images/focus-icon.png" alt="FOCUS-ON" class="app-icon">
+                    <img src="Bilder_und _andere_Assets_für_Website/Icons/Focus-On-iOS-Default-1024x1024@1x.png" alt="FOCUS-ON" class="app-icon">
                     <div class="tooltip">
                         <div class="tooltip-name">FOCUS-ON</div>
                         <div class="tooltip-platform">iOS</div>
                     </div>
                 </div>
                 
-                <!-- 3DME -->
-                <div class="app-nav-item" data-app="3dme" style="--app-color: #4a90d9;">
-                    <img src="images/3dme-icon.png" alt="3DME" class="app-icon">
+                <!-- 3DME (wide icon) -->
+                <div class="app-nav-item wide-icon" data-app="3dme" style="--app-color: #4a90d9;">
+                    <img src="Bilder_und _andere_Assets_für_Website/Icons/3DME_icon_2x_preview.png" alt="3DME" class="app-icon">
                     <div class="tooltip">
                         <div class="tooltip-name">3DME</div>
                         <div class="tooltip-platform">tvOS · Apple TV</div>
@@ -520,8 +585,8 @@
         <main class="main">
             <!-- Top Bar -->
             <div class="topbar">
-                <a href="privacy.html">Privacy</a>
-                <a href="imprint.html">Imprint</a>
+                <button class="topbar-link" data-panel="privacy">Privacy</button>
+                <button class="topbar-link" data-panel="imprint">Imprint</button>
             </div>
             
             <!-- Content -->
@@ -541,7 +606,7 @@
                 <!-- ZUME Panel -->
                 <div class="app-panel" id="zume">
                     <div class="app-header">
-                        <img src="images/zume-icon.png" alt="ZUME" class="app-header-icon">
+                        <img src="Bilder_und _andere_Assets_für_Website/Icons/ZUME_AppIcon-iOS-Default-1024x1024@1x.png" alt="ZUME" class="app-header-icon">
                         <div class="app-header-info">
                             <h1>ZUME</h1>
                             <p class="tagline">Smart Camera Tools – Mirror with Emotion Coach, Magnifier with OCR & Translation, DailyPhoto with Time-Lapse.</p>
@@ -586,7 +651,7 @@
                 <!-- PARANOID Panel -->
                 <div class="app-panel" id="paranoid">
                     <div class="app-header">
-                        <img src="images/paranoid-icon.png" alt="PARANOID" class="app-header-icon">
+                        <img src="Bilder_und _andere_Assets_für_Website/Icons/PARANOID_App_Icon-iOS-Default-1024x1024@1x.png" alt="PARANOID" class="app-header-icon">
                         <div class="app-header-info">
                             <h1>PARANOID</h1>
                             <p class="tagline">Multiplayer Social Deduction Party Game. One player is secretly the Chosen One – nobody knows who, not even the player themselves.</p>
@@ -621,7 +686,7 @@
                 <!-- CRYPTOR Panel -->
                 <div class="app-panel" id="cryptor">
                     <div class="app-header">
-                        <img src="images/cryptor-icon.png" alt="CRYPTOR" class="app-header-icon">
+                        <img src="Bilder_und _andere_Assets_für_Website/Icons/CRYPTOR-iOS-Default-1024x1024@1x.png" alt="CRYPTOR" class="app-header-icon">
                         <div class="app-header-info">
                             <h1>CRYPTOR</h1>
                             <p class="tagline">The most intuitive crypto app for beginners AND advanced users. Track your portfolio and learn crypto through interactive education.</p>
@@ -656,7 +721,7 @@
                 <!-- FOCUS-ON Panel -->
                 <div class="app-panel" id="focus">
                     <div class="app-header">
-                        <img src="images/focus-icon.png" alt="FOCUS-ON" class="app-header-icon">
+                        <img src="Bilder_und _andere_Assets_für_Website/Icons/Focus-On-iOS-Default-1024x1024@1x.png" alt="FOCUS-ON" class="app-header-icon">
                         <div class="app-header-info">
                             <h1>FOCUS-ON</h1>
                             <p class="tagline">Ambient soundscapes and focus music to boost your productivity and concentration. Find your flow state.</p>
@@ -691,7 +756,7 @@
                 <!-- 3DME Panel -->
                 <div class="app-panel" id="3dme">
                     <div class="app-header">
-                        <img src="images/3dme-icon.png" alt="3DME" class="app-header-icon">
+                        <img src="Bilder_und _andere_Assets_für_Website/Icons/3DME_icon_2x_preview.png" alt="3DME" class="app-header-icon wide">
                         <div class="app-header-info">
                             <h1>3DME</h1>
                             <p class="tagline">Convert your 2D photos into stunning stereoscopic 3D images using AI-powered depth estimation. For Apple TV 4K and polarized 3D TVs.</p>
@@ -722,6 +787,130 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- Privacy Panel -->
+                <div class="app-panel legal-panel" id="privacy">
+                    <h1>Privacy Policy</h1>
+                    <p><strong>Last updated: March 2026</strong></p>
+                    
+                    <h2>1. Introduction</h2>
+                    <p>We appreciate your interest in our apps. Protecting your privacy is very important to us. Below we inform you about how we handle your data.</p>
+                    
+                    <h2>2. Controller</h2>
+                    <div class="contact-box">
+                        <p>
+                            <strong>Ugur Cetin</strong><br>
+                            Bostonring 41/4<br>
+                            71686 Remseck am Neckar<br>
+                            Germany<br><br>
+                            Email: <a href="mailto:ucetin.mail@icloud.com">ucetin.mail@icloud.com</a>
+                        </p>
+                    </div>
+                    
+                    <h2>3. What data do our apps collect?</h2>
+                    <p><strong>In short: Our apps do not collect any personal data.</strong></p>
+                    <p>All features work completely locally on your device:</p>
+                    <ul>
+                        <li><strong>Camera:</strong> Used only for live display. No images are stored or transmitted without your consent.</li>
+                        <li><strong>Photos:</strong> Images are stored exclusively in your local photo library.</li>
+                        <li><strong>AI Features:</strong> All AI analysis runs entirely on your device (Core ML). No images leave your device.</li>
+                        <li><strong>OCR & Translation:</strong> Uses iOS native APIs and processes data locally.</li>
+                    </ul>
+                    
+                    <h2>4. No data transfer to third parties</h2>
+                    <p>Our apps do not transfer data to external servers, analytics services, or advertising providers. There are:</p>
+                    <ul>
+                        <li>No tracking tools (like Google Analytics or Firebase)</li>
+                        <li>No advertising</li>
+                        <li>No social media integration</li>
+                        <li>No cloud synchronization</li>
+                    </ul>
+                    
+                    <h2>5. In-App Purchases</h2>
+                    <p>If you make an in-app purchase, the transaction is handled entirely by Apple via the App Store. We do not receive any personal payment data from Apple.</p>
+                    
+                    <h2>6. Permissions</h2>
+                    <p>Our apps may require the following permissions:</p>
+                    <ul>
+                        <li><strong>Camera:</strong> For camera-based features</li>
+                        <li><strong>Photo Library:</strong> For saving and loading photos</li>
+                        <li><strong>Notifications (optional):</strong> For reminders</li>
+                    </ul>
+                    <p>You can revoke these permissions at any time in iOS Settings.</p>
+                    
+                    <h2>7. Data Security</h2>
+                    <p>Since all data remains locally on your device, you benefit from the security mechanisms of your iOS device, including encryption and Face ID/Touch ID.</p>
+                    
+                    <h2>8. Your Rights</h2>
+                    <p>Since we do not collect any personal data, there is no data stored with us that you would need to access, correct, or delete. All data is exclusively on your device.</p>
+                    
+                    <h2>9. Contact</h2>
+                    <p>For privacy questions, please contact us at:<br>
+                    <a href="mailto:ucetin.mail@icloud.com">ucetin.mail@icloud.com</a></p>
+                </div>
+                
+                <!-- Imprint Panel -->
+                <div class="app-panel legal-panel" id="imprint">
+                    <h1>Imprint</h1>
+                    
+                    <h2>Information according to § 5 TMG</h2>
+                    <div class="contact-box">
+                        <p>
+                            <strong>Ugur Cetin</strong><br>
+                            Bostonring 41/4<br>
+                            71686 Remseck am Neckar<br>
+                            Germany
+                        </p>
+                    </div>
+                    
+                    <h2>Contact</h2>
+                    <p>Email: <a href="mailto:ucetin.mail@icloud.com">ucetin.mail@icloud.com</a></p>
+                    
+                    <h2>Responsible for content according to § 55 Abs. 2 RStV</h2>
+                    <p>
+                        Ugur Cetin<br>
+                        Bostonring 41/4<br>
+                        71686 Remseck am Neckar
+                    </p>
+                    
+                    <h2>EU Dispute Resolution</h2>
+                    <p>The European Commission provides a platform for online dispute resolution (OS): <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a></p>
+                    <p>Our email address can be found above in the imprint.</p>
+                    
+                    <h2>Consumer Dispute Resolution</h2>
+                    <p>We are not willing or obligated to participate in dispute resolution proceedings before a consumer arbitration board.</p>
+                    
+                    <hr>
+                    
+                    <h1>Impressum</h1>
+                    
+                    <h2>Angaben gemäß § 5 TMG</h2>
+                    <div class="contact-box">
+                        <p>
+                            <strong>Ugur Cetin</strong><br>
+                            Bostonring 41/4<br>
+                            71686 Remseck am Neckar<br>
+                            Deutschland
+                        </p>
+                    </div>
+                    
+                    <h2>Kontakt</h2>
+                    <p>E-Mail: <a href="mailto:ucetin.mail@icloud.com">ucetin.mail@icloud.com</a></p>
+                    
+                    <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+                    <p>
+                        Ugur Cetin<br>
+                        Bostonring 41/4<br>
+                        71686 Remseck am Neckar
+                    </p>
+                    
+                    <h2>EU-Streitschlichtung</h2>
+                    <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a></p>
+                    <p>Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
+                    
+                    <h2>Verbraucherstreitbeilegung / Universalschlichtungsstelle</h2>
+                    <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+                </div>
             </div>
         </main>
     </div>
@@ -729,23 +918,46 @@
     <script>
         // App Navigation
         const navItems = document.querySelectorAll('.app-nav-item');
+        const topbarLinks = document.querySelectorAll('.topbar-link');
         const panels = document.querySelectorAll('.app-panel');
         
+        function showPanel(panelId) {
+            // Hide all panels
+            panels.forEach(panel => panel.classList.remove('active'));
+            
+            // Remove active from nav items
+            navItems.forEach(nav => nav.classList.remove('active'));
+            
+            // Show selected panel
+            const targetPanel = document.getElementById(panelId);
+            if (targetPanel) {
+                targetPanel.classList.add('active');
+            }
+            
+            // Set active nav item if it's an app
+            const activeNav = document.querySelector(`[data-app="${panelId}"]`);
+            if (activeNav) {
+                activeNav.classList.add('active');
+            }
+        }
+        
+        // App nav click handlers
         navItems.forEach(item => {
             item.addEventListener('click', () => {
                 const appId = item.dataset.app;
-                
-                // Update nav active state
-                navItems.forEach(nav => nav.classList.remove('active'));
-                item.classList.add('active');
-                
-                // Show corresponding panel
-                panels.forEach(panel => panel.classList.remove('active'));
-                document.getElementById(appId).classList.add('active');
+                showPanel(appId);
             });
         });
         
-        // Show ZUME by default on load (first app)
+        // Topbar link click handlers (Privacy/Imprint)
+        topbarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const panelId = link.dataset.panel;
+                showPanel(panelId);
+            });
+        });
+        
+        // Show ZUME by default on load
         document.querySelector('[data-app="zume"]').click();
     </script>
 </body>
