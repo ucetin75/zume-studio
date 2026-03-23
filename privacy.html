@@ -155,6 +155,22 @@
             <li><strong>OCR & Übersetzung:</strong> Die Texterkennung und Übersetzung nutzt iOS-eigene APIs und verarbeitet Daten lokal.</li>
         </ul>
         
+        <h2>3a. Gesichtserkennung & TrueDepth API</h2>
+        <p>ZUME verwendet die TrueDepth-Kamera und Apple's Vision/ARKit Frameworks für folgende Funktionen:</p>
+        <ul>
+            <li><strong>Emotion Coach:</strong> Erkennung von Gesichtsausdrücken (Lächeln, Augenbrauen, etc.) zur Stimmungsanalyse</li>
+            <li><strong>Celebrity Match:</strong> Vergleich von Gesichtsmerkmalen mit einem lokalen Core ML Modell</li>
+            <li><strong>Spiegel-Modus:</strong> Echtzeit-Gesichtserkennung für die Spiegelansicht</li>
+        </ul>
+        <p><strong>Wichtige Datenschutzhinweise zur Gesichtserkennung:</strong></p>
+        <ul>
+            <li>Alle Gesichtsdaten werden <strong>ausschließlich in Echtzeit</strong> verarbeitet</li>
+            <li><strong>Keine Gesichtsdaten werden gespeichert</strong> – weder auf dem Gerät noch in der Cloud</li>
+            <li><strong>Keine Gesichtsdaten werden übertragen</strong> – die App hat keinen Server-Backend</li>
+            <li><strong>Keine Weitergabe an Dritte</strong> – Gesichtsdaten verlassen niemals Ihr Gerät</li>
+            <li>Die Analyse erfolgt Frame für Frame und wird <strong>sofort nach der Verarbeitung verworfen</strong></li>
+        </ul>
+        
         <h2>4. Keine Datenübertragung an Dritte</h2>
         <p>ZUME überträgt keine Daten an externe Server, Analyse-Dienste oder Werbeanbieter. Es gibt:</p>
         <ul>
@@ -202,6 +218,22 @@
             <li><strong>Photos:</strong> DailyPhoto images are stored exclusively in your local photo library.</li>
             <li><strong>Celebrity Match:</strong> AI analysis runs entirely on your device using Core ML.</li>
             <li><strong>OCR & Translation:</strong> Uses iOS native APIs, processed locally.</li>
+        </ul>
+        
+        <h2>Face Detection & TrueDepth API</h2>
+        <p>ZUME uses the TrueDepth camera and Apple's Vision/ARKit frameworks for the following features:</p>
+        <ul>
+            <li><strong>Emotion Coach:</strong> Detects facial expressions (smile, eyebrows, etc.) for mood analysis</li>
+            <li><strong>Celebrity Match:</strong> Compares facial features with a local Core ML model</li>
+            <li><strong>Mirror Mode:</strong> Real-time face detection for the mirror view</li>
+        </ul>
+        <p><strong>Important privacy information regarding face detection:</strong></p>
+        <ul>
+            <li>All facial data is processed <strong>in real-time only</strong></li>
+            <li><strong>No facial data is stored</strong> – neither on the device nor in the cloud</li>
+            <li><strong>No facial data is transmitted</strong> – the app has no server backend</li>
+            <li><strong>No sharing with third parties</strong> – facial data never leaves your device</li>
+            <li>Analysis is performed frame by frame and <strong>immediately discarded after processing</strong></li>
         </ul>
         
         <h2>No third-party data sharing</h2>
