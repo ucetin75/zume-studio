@@ -1827,9 +1827,14 @@
                 if (hash.startsWith('privacy-')) {
                     showPanel('privacy');
                     const appName = hash.replace('privacy-', '');
+                    // Update currentPrivacyApp and trigger tab switch
+                    currentPrivacyApp = appName;
                     const privacyTab = document.querySelector(`[data-privacy-app="${appName}"]`);
                     if (privacyTab) {
-                        privacyTab.click();
+                        // Update tab active states
+                        document.querySelectorAll('.privacy-tab').forEach(t => t.classList.remove('active'));
+                        privacyTab.classList.add('active');
+                        updatePrivacyContent();
                     }
                     return;
                 }
@@ -1837,10 +1842,6 @@
             // Default: show ZUME
             document.querySelector('[data-app="zume"]').click();
         }
-        
-        // Handle initial load and hash changes
-        handleHashNavigation();
-        window.addEventListener('hashchange', handleHashNavigation);
         
         // Privacy Tabs & Language Switching
         const privacyTabs = document.querySelectorAll('.privacy-tab');
@@ -1922,6 +1923,10 @@
                 });
             });
         });
+        
+        // Handle initial load and hash changes (MUST be after all definitions)
+        handleHashNavigation();
+        window.addEventListener('hashchange', handleHashNavigation);
     </script>
 </body>
 </html>
