@@ -72,38 +72,34 @@
             cursor: pointer;
             transition: transform 0.3s ease;
             display: flex;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
         }
         
         .app-nav-item:hover {
-            transform: scale(1.08);
+            transform: scale(1.05);
         }
-        
+
         .app-nav-item.active {
             transform: scale(1.05);
         }
-        
-        .app-nav-item.active::before {
-            content: '';
-            position: absolute;
-            left: -15px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 60%;
-            background: var(--app-color, #fff);
-            border-radius: 0 4px 4px 0;
+
+        .app-nav-item.active .app-icon {
+            border: 2px solid var(--app-color, #fff);
+            box-shadow: 0 0 12px color-mix(in srgb, var(--app-color, #fff) 30%, transparent);
         }
-        
+
         .app-icon {
             width: 80px;
             height: 80px;
             border-radius: 18px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-            transition: box-shadow 0.3s ease;
+            transition: box-shadow 0.3s ease, border 0.3s ease, transform 0.3s ease;
             object-fit: cover;
+            border: 2px solid transparent;
         }
-        
+
         /* Special handling for 3DME wider icon - same HEIGHT as others */
         .app-nav-item.wide-icon .app-icon {
             width: auto;
@@ -111,9 +107,23 @@
             max-width: 120px;
             border-radius: 14px;
         }
-        
+
         .app-nav-item:hover .app-icon {
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+        }
+
+        .app-name {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-top: 6px;
+            transition: color 0.3s ease;
+        }
+
+        .app-nav-item.active .app-name {
+            color: var(--app-color, #fff);
         }
         
         /* Tooltip */
@@ -156,11 +166,6 @@
             color: var(--text-primary);
         }
         
-        .tooltip-platform {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            margin-top: 2px;
-        }
         
         /* Main Content */
         .main {
@@ -843,6 +848,10 @@
             .tooltip {
                 display: none;
             }
+
+            .app-name {
+                font-size: 9px;
+            }
         }
         
         @media (max-width: 600px) {
@@ -869,45 +878,45 @@
                 <!-- ZUME -->
                 <div class="app-nav-item" data-app="zume" style="--app-color: #00d4aa;">
                     <img src="Bilder_und _andere_Assets_für_Website/Icons/ZUME_AppIcon-iOS-Default-1024x1024@1x.png" alt="ZUME" class="app-icon">
+                    <span class="app-name">ZUME</span>
                     <div class="tooltip">
                         <div class="tooltip-name">ZUME</div>
-                        <div class="tooltip-platform">iOS</div>
                     </div>
                 </div>
-                
+
                 <!-- PARANOID -->
                 <div class="app-nav-item" data-app="paranoid" style="--app-color: #e63946;">
                     <img src="Bilder_und _andere_Assets_für_Website/Icons/PARANOID_App_Icon-iOS-Default-1024x1024@1x.png" alt="PARANOID" class="app-icon">
+                    <span class="app-name">PARANOID</span>
                     <div class="tooltip">
                         <div class="tooltip-name">PARANOID</div>
-                        <div class="tooltip-platform">iOS · Multiplayer</div>
                     </div>
                 </div>
-                
+
                 <!-- CRYPTOR -->
                 <div class="app-nav-item" data-app="cryptor" style="--app-color: #f7931a;">
                     <img src="Bilder_und _andere_Assets_für_Website/Icons/CRYPTOR-iOS-Default-1024x1024@1x.png" alt="CRYPTOR" class="app-icon">
+                    <span class="app-name">CRYPTOR</span>
                     <div class="tooltip">
                         <div class="tooltip-name">CRYPTOR</div>
-                        <div class="tooltip-platform">iOS</div>
                     </div>
                 </div>
-                
+
                 <!-- FOCUS-ON -->
                 <div class="app-nav-item" data-app="focus" style="--app-color: #00d4aa;">
                     <img src="Bilder_und _andere_Assets_für_Website/Icons/Focus-On-iOS-Default-1024x1024@1x.png" alt="FOCUS-ON" class="app-icon">
+                    <span class="app-name">FOCUS-ON</span>
                     <div class="tooltip">
                         <div class="tooltip-name">FOCUS-ON</div>
-                        <div class="tooltip-platform">iOS</div>
                     </div>
                 </div>
-                
+
                 <!-- 3DME (wide icon) -->
                 <div class="app-nav-item wide-icon" data-app="3dme" style="--app-color: #4a90d9;">
                     <img src="Bilder_und _andere_Assets_für_Website/Icons/3DME_icon.png" alt="3DME" class="app-icon">
+                    <span class="app-name">3DME</span>
                     <div class="tooltip">
                         <div class="tooltip-name">3DME</div>
-                        <div class="tooltip-platform">tvOS · Apple TV</div>
                     </div>
                 </div>
             </nav>
