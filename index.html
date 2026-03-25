@@ -666,12 +666,12 @@
 
         .welcome-hero {
             text-align: center;
-            margin-bottom: 48px;
+            margin-bottom: 56px;
         }
 
         .welcome-hero .hero-logo {
             width: 100px;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .welcome-hero .hero-tagline {
@@ -680,20 +680,27 @@
             font-weight: 400;
             letter-spacing: 2px;
             margin: 0 0 12px;
-            background: linear-gradient(135deg, #00d4ff, #7c3aed, #ff006e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
         }
 
         .welcome-hero .hero-subtitle {
             font-size: 1.1rem;
-            color: var(--text-secondary);
+            color: rgba(255,255,255,0.6);
             margin: 0;
+        }
+
+        /* Section Labels */
+        .section-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #00d4aa;
+            margin: 0 0 20px;
         }
 
         /* Featured App */
         .featured-app {
-            position: relative;
             display: flex;
             gap: 24px;
             align-items: center;
@@ -701,27 +708,13 @@
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 16px;
             padding: 24px;
-            margin-bottom: 40px;
+            margin-bottom: 48px;
             cursor: pointer;
-            transition: border-color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .featured-app:hover {
             border-color: #00d4aa;
-        }
-
-        .featured-badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: #00d4aa;
-            color: #000;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 4px 10px;
-            border-radius: 6px;
         }
 
         .featured-app .featured-icon {
@@ -759,13 +752,6 @@
         }
 
         /* App Grid */
-        .app-grid-section h2 {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            margin: 0 0 20px;
-            font-weight: 500;
-        }
-
         .app-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -774,14 +760,14 @@
 
         .app-grid-card {
             display: flex;
-            align-items: center;
-            gap: 14px;
+            align-items: flex-start;
+            gap: 16px;
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 16px;
-            padding: 16px;
+            padding: 24px;
             cursor: pointer;
-            transition: border-color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .app-grid-card:hover {
@@ -805,27 +791,21 @@
         }
 
         .grid-info h3 {
-            margin: 0 0 6px;
+            margin: 0 0 4px;
             font-size: 1.1rem;
         }
 
-        .grid-info .grid-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-
-        .grid-badge-platform {
-            font-size: 0.7rem;
-            padding: 3px 8px;
-            border-radius: 6px;
-            background: rgba(255,255,255,0.1);
+        .grid-info .grid-desc {
+            font-size: 0.85rem;
             color: var(--text-secondary);
+            margin: 0 0 10px;
+            line-height: 1.4;
         }
 
         .grid-badge-status {
+            display: inline-block;
             font-size: 0.7rem;
-            padding: 3px 8px;
+            padding: 3px 10px;
             border-radius: 6px;
             font-weight: 600;
         }
@@ -837,7 +817,19 @@
 
         .grid-badge-status.soon {
             background: rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.3);
+        }
+
+        .grid-badge-status.dev {
+            background: rgba(255,255,255,0.06);
+            color: rgba(255,255,255,0.2);
+        }
+
+        .welcome-footer {
+            text-align: center;
+            margin-top: 48px;
             color: var(--text-secondary);
+            font-size: 0.85rem;
         }
 
         @media (max-width: 900px) {
@@ -852,12 +844,6 @@
 
             .featured-app .featured-screenshot {
                 width: 120px;
-            }
-
-            .featured-badge {
-                position: static;
-                display: inline-block;
-                margin-bottom: 8px;
             }
 
             .app-grid {
@@ -939,7 +925,7 @@
     <div class="layout">
         <!-- Sidebar -->
         <aside class="sidebar">
-            <div class="logo">
+            <div class="logo" onclick="showPanel('welcome'); window.location.hash = '';" style="cursor: pointer;">
                 <img src="Bilder_und _andere_Assets_für_Website/ZUME_Studio_LOGO/ZUME_Studio_LOGO.003.png" alt="ZUME Studio">
             </div>
             
@@ -1011,9 +997,9 @@
                             <p class="hero-subtitle">Independent App Studio based in Germany</p>
                         </div>
 
-                        <!-- Featured App -->
+                        <!-- Featured -->
+                        <p class="section-label">Featured</p>
                         <div class="featured-app" onclick="showPanel('zume')">
-                            <span class="featured-badge">Featured</span>
                             <img src="Bilder_und _andere_Assets_für_Website/Icons/ZUME_AppIcon-iOS-Default-1024x1024@1x.png" alt="ZUME" class="featured-icon">
                             <img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/ZUME_Screenshots/1_Celeb_Match_en.png" alt="ZUME Screenshot" class="featured-screenshot">
                             <div class="featured-info">
@@ -1026,65 +1012,55 @@
                         </div>
 
                         <!-- App Grid -->
-                        <div class="app-grid-section">
-                            <h2>All Apps</h2>
-                            <div class="app-grid">
-                                <div class="app-grid-card" style="--card-hover-color: #00d4aa;" onclick="showPanel('zume')">
-                                    <img src="Bilder_und _andere_Assets_für_Website/Icons/ZUME_AppIcon-iOS-Default-1024x1024@1x.png" alt="ZUME" class="grid-icon">
-                                    <div class="grid-info">
-                                        <h3>ZUME</h3>
-                                        <div class="grid-badges">
-                                            <span class="grid-badge-platform">iOS</span>
-                                            <span class="grid-badge-status live">Live</span>
-                                        </div>
-                                    </div>
+                        <p class="section-label">Our Apps</p>
+                        <div class="app-grid">
+                            <div class="app-grid-card" style="--card-hover-color: #00d4aa;" onclick="showPanel('zume')">
+                                <img src="Bilder_und _andere_Assets_für_Website/Icons/ZUME_AppIcon-iOS-Default-1024x1024@1x.png" alt="ZUME" class="grid-icon">
+                                <div class="grid-info">
+                                    <h3>ZUME</h3>
+                                    <p class="grid-desc">Smart Camera Tools with Mirror, Magnifier & DailyPhoto.</p>
+                                    <span class="grid-badge-status live">Live</span>
                                 </div>
+                            </div>
 
-                                <div class="app-grid-card" style="--card-hover-color: #e63946;" onclick="showPanel('paranoid')">
-                                    <img src="Bilder_und _andere_Assets_für_Website/Icons/PARANOID_App_Icon-iOS-Default-1024x1024@1x.png" alt="PARANOID" class="grid-icon">
-                                    <div class="grid-info">
-                                        <h3>PARANOID</h3>
-                                        <div class="grid-badges">
-                                            <span class="grid-badge-platform">iOS</span>
-                                            <span class="grid-badge-status soon">Coming Soon</span>
-                                        </div>
-                                    </div>
+                            <div class="app-grid-card" style="--card-hover-color: #e63946;" onclick="showPanel('paranoid')">
+                                <img src="Bilder_und _andere_Assets_für_Website/Icons/PARANOID_App_Icon-iOS-Default-1024x1024@1x.png" alt="PARANOID" class="grid-icon">
+                                <div class="grid-info">
+                                    <h3>PARANOID</h3>
+                                    <p class="grid-desc">Multiplayer Social Deduction Party Game for 4-8 Players.</p>
+                                    <span class="grid-badge-status soon">Coming Soon</span>
                                 </div>
+                            </div>
 
-                                <div class="app-grid-card" style="--card-hover-color: #f7931a;" onclick="showPanel('cryptor')">
-                                    <img src="Bilder_und _andere_Assets_für_Website/Icons/CRYPTOR-iOS-Default-1024x1024@1x.png" alt="CRYPTOR" class="grid-icon">
-                                    <div class="grid-info">
-                                        <h3>CRYPTOR</h3>
-                                        <div class="grid-badges">
-                                            <span class="grid-badge-platform">iOS</span>
-                                            <span class="grid-badge-status soon">Coming Soon</span>
-                                        </div>
-                                    </div>
+                            <div class="app-grid-card" style="--card-hover-color: #f7931a;" onclick="showPanel('cryptor')">
+                                <img src="Bilder_und _andere_Assets_für_Website/Icons/CRYPTOR-iOS-Default-1024x1024@1x.png" alt="CRYPTOR" class="grid-icon">
+                                <div class="grid-info">
+                                    <h3>CRYPTOR</h3>
+                                    <p class="grid-desc">Intuitive crypto portfolio tracker with interactive education.</p>
+                                    <span class="grid-badge-status soon">Coming Soon</span>
                                 </div>
+                            </div>
 
-                                <div class="app-grid-card" style="--card-hover-color: #00d4aa;" onclick="showPanel('focus')">
-                                    <img src="Bilder_und _andere_Assets_für_Website/Icons/Focus-On-iOS-Default-1024x1024@1x.png" alt="FOCUS-ON" class="grid-icon">
-                                    <div class="grid-info">
-                                        <h3>FOCUS-ON</h3>
-                                        <div class="grid-badges">
-                                            <span class="grid-badge-platform">iOS</span>
-                                            <span class="grid-badge-status soon">In Development</span>
-                                        </div>
-                                    </div>
+                            <div class="app-grid-card" style="--card-hover-color: #00d4aa;" onclick="showPanel('focus')">
+                                <img src="Bilder_und _andere_Assets_für_Website/Icons/Focus-On-iOS-Default-1024x1024@1x.png" alt="FOCUS-ON" class="grid-icon">
+                                <div class="grid-info">
+                                    <h3>FOCUS-ON</h3>
+                                    <p class="grid-desc">Ambient soundscapes and focus music for productivity.</p>
+                                    <span class="grid-badge-status dev">In Development</span>
                                 </div>
+                            </div>
 
-                                <div class="app-grid-card" style="--card-hover-color: #4a90d9;" onclick="showPanel('3dme')">
-                                    <img src="Bilder_und _andere_Assets_für_Website/Icons/3DME_icon.png" alt="3DME" class="grid-icon wide">
-                                    <div class="grid-info">
-                                        <h3>3DME</h3>
-                                        <div class="grid-badges">
-                                            <span class="grid-badge-platform">tvOS</span>
-                                            <span class="grid-badge-status live">Live</span>
-                                        </div>
-                                    </div>
+                            <div class="app-grid-card" style="--card-hover-color: #4a90d9;" onclick="showPanel('3dme')">
+                                <img src="Bilder_und _andere_Assets_für_Website/Icons/3DME_icon.png" alt="3DME" class="grid-icon wide">
+                                <div class="grid-info">
+                                    <h3>3DME</h3>
+                                    <p class="grid-desc">AI-powered 2D to 3D photo conversion for Apple TV 4K.</p>
+                                    <span class="grid-badge-status live">Live</span>
                                 </div>
                             </div>
                         </div>
+
+                        <p class="welcome-footer">Made with ♥ in Germany</p>
                     </div>
                 </div>
                 
@@ -2303,8 +2279,8 @@
                     return;
                 }
             }
-            // Default: show ZUME
-            document.querySelector('[data-app="zume"]').click();
+            // Default: show Welcome
+            showPanel('welcome');
         }
         
         // Privacy Tabs & Language Switching
