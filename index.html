@@ -743,7 +743,9 @@
         }
 
         .welcome-hero .hero-logo {
-            width: 100px;
+            max-width: 180px;
+            height: auto;
+            object-fit: contain;
             margin-bottom: 24px;
         }
 
@@ -804,7 +806,8 @@
 
         .featured-info h2 {
             margin: 0 0 8px;
-            font-size: 1.6rem;
+            font-size: 28px;
+            font-weight: 700;
         }
 
         .featured-info .featured-desc {
@@ -836,8 +839,9 @@
             padding: 24px;
             cursor: pointer;
             transition: all 0.3s ease;
-            width: calc(33.333% - 11px);
+            flex: 0 1 calc(33.33% - 16px);
             max-width: 340px;
+            min-width: 280px;
             min-height: 140px;
         }
 
@@ -917,7 +921,7 @@
             }
 
             .app-grid-card {
-                width: calc(50% - 8px);
+                flex: 0 1 calc(50% - 16px);
                 max-width: none;
             }
 
@@ -940,7 +944,8 @@
 
         @media (max-width: 600px) {
             .app-grid-card {
-                width: 100%;
+                flex: 0 1 100%;
+                min-width: 0;
             }
         }
         
@@ -1014,45 +1019,30 @@
                 <div class="app-nav-item" data-app="zume" style="--app-color: #00d4aa;" role="button" tabindex="0" aria-label="View ZUME app">
                     <img src="Bilder_und _andere_Assets_für_Website/Icons/ZUME_AppIcon-iOS-Default-1024x1024@1x.png" alt="ZUME App Icon - Smart Camera Tools for iOS" class="app-icon" width="80" height="80">
                     <span class="app-name">ZUME</span>
-                    <div class="tooltip">
-                        <div class="tooltip-name">ZUME</div>
-                    </div>
                 </div>
 
                 <!-- PARANOID -->
                 <div class="app-nav-item" data-app="paranoid" style="--app-color: #e63946;" role="button" tabindex="0" aria-label="View PARANOID app">
                     <img src="Bilder_und _andere_Assets_für_Website/Icons/PARANOID_App_Icon-iOS-Default-1024x1024@1x.png" alt="PARANOID App Icon - Multiplayer Party Game" class="app-icon" width="80" height="80" loading="lazy">
                     <span class="app-name">PARANOID</span>
-                    <div class="tooltip">
-                        <div class="tooltip-name">PARANOID</div>
-                    </div>
                 </div>
 
                 <!-- CRYPTOR -->
                 <div class="app-nav-item" data-app="cryptor" style="--app-color: #f7931a;" role="button" tabindex="0" aria-label="View CRYPTOR app">
                     <img src="Bilder_und _andere_Assets_für_Website/Icons/CRYPTOR-iOS-Default-1024x1024@1x.png" alt="CRYPTOR App Icon - Crypto Portfolio Tracker" class="app-icon" width="80" height="80" loading="lazy">
                     <span class="app-name">CRYPTOR</span>
-                    <div class="tooltip">
-                        <div class="tooltip-name">CRYPTOR</div>
-                    </div>
                 </div>
 
                 <!-- FOCUS-ON -->
                 <div class="app-nav-item" data-app="focus" style="--app-color: #00d4aa;" role="button" tabindex="0" aria-label="View FOCUS-ON app">
                     <img src="Bilder_und _andere_Assets_für_Website/Icons/Focus-On-iOS-Default-1024x1024@1x.png" alt="FOCUS-ON App Icon - Ambient Sounds and Focus Music" class="app-icon" width="80" height="80" loading="lazy">
                     <span class="app-name">FOCUS-ON</span>
-                    <div class="tooltip">
-                        <div class="tooltip-name">FOCUS-ON</div>
-                    </div>
                 </div>
 
                 <!-- 3DME (wide icon) -->
                 <div class="app-nav-item wide-icon" data-app="3dme" style="--app-color: #4a90d9;" role="button" tabindex="0" aria-label="View 3DME app">
                     <img src="Bilder_und _andere_Assets_für_Website/Icons/3DME_icon.png" alt="3DME App Icon - AI 3D Photo Conversion for Apple TV" class="app-icon" width="80" height="80" loading="lazy">
                     <span class="app-name">3DME</span>
-                    <div class="tooltip">
-                        <div class="tooltip-name">3DME</div>
-                    </div>
                 </div>
             </nav>
         </aside>
@@ -1077,7 +1067,7 @@
                                 <img src="Bilder_und _andere_Assets_für_Website/hero_bg.png" alt="" class="hero-bg" width="1536" height="1024">
                             </picture>
                             <div class="hero-content">
-                                <img src="Bilder_und _andere_Assets_für_Website/ZUME_Studio_LOGO/ZUME_Studio_LOGO.003.png" alt="ZUME Studio Logo - Independent App Development" class="hero-logo" width="100" height="100">
+                                <img src="Bilder_und _andere_Assets_für_Website/ZUME_Studio_LOGO/ZUME_Studio_LOGO.003.png" alt="ZUME Studio Logo - Independent App Development" class="hero-logo">
                                 <h1 class="hero-tagline">Crafting Smart iOS & tvOS Apps</h1>
                                 <p class="hero-subtitle">Independent App Studio based in Germany</p>
                             </div>
