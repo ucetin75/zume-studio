@@ -317,24 +317,33 @@
             color: var(--text-secondary);
         }
         
+        /* Section Divider */
+        .section-divider {
+            height: 1px;
+            border: none;
+            margin: 48px 0;
+            background: linear-gradient(90deg, transparent, var(--app-accent, rgba(255,255,255,0.3)), transparent);
+            opacity: 0.3;
+        }
+
         /* Features Grid */
         .features-section {
-            margin-top: 50px;
+            margin-bottom: 48px;
         }
-        
+
         .features-section h2 {
             font-size: 1.5rem;
             margin-bottom: 25px;
             color: var(--text-secondary);
             font-weight: 600;
         }
-        
+
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 20px;
         }
-        
+
         .feature-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border-color);
@@ -342,47 +351,96 @@
             padding: 25px;
             transition: background 0.3s, transform 0.3s;
         }
-        
+
         .feature-card:hover {
             background: rgba(255, 255, 255, 0.05);
             transform: translateY(-3px);
         }
-        
+
         .feature-icon {
-            font-size: 2rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-bottom: 15px;
         }
-        
+
+        .feature-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
         .feature-card h3 {
             font-size: 1.1rem;
             margin-bottom: 10px;
         }
-        
+
         .feature-card p {
             color: var(--text-secondary);
             font-size: 0.9rem;
             line-height: 1.6;
         }
-        
+
+        /* Coming Soon Pill */
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 24px;
+        }
+
+        .status-pill .pill-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--app-accent, #fff);
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
         /* Screenshots Section */
         .screenshots-section {
-            margin-top: 50px;
+            margin-bottom: 48px;
         }
-        
-        .screenshots-section h2 {
-            font-size: 1.5rem;
-            margin-bottom: 25px;
-            color: var(--text-secondary);
-            font-weight: 600;
-        }
-        
-        .screenshots-grid {
+
+        .screenshots-gallery {
             display: flex;
-            gap: 20px;
+            gap: 16px;
             overflow-x: auto;
-            padding-bottom: 20px;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 12px;
+            -webkit-overflow-scrolling: touch;
         }
-        
+
+        .screenshots-gallery::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .screenshots-gallery::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.05);
+            border-radius: 2px;
+        }
+
+        .screenshots-gallery::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.2);
+            border-radius: 2px;
+        }
+
+        .screenshots-gallery::-webkit-scrollbar-thumb:hover {
+            background: rgba(255,255,255,0.35);
+        }
+
         .screenshot {
             flex-shrink: 0;
             width: 220px;
@@ -395,26 +453,23 @@
             justify-content: center;
             color: var(--text-secondary);
             font-size: 0.9rem;
+            scroll-snap-align: center;
         }
-        
+
         .screenshot img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 20px;
         }
-        
+
         /* TV Screenshots (wider aspect ratio for tvOS/Apple TV) */
-        .screenshots-grid-tv {
-            flex-wrap: wrap;
-        }
-        
         .screenshot-tv {
             width: 400px;
             height: 225px;
             border-radius: 12px;
         }
-        
+
         .screenshot-tv img {
             border-radius: 12px;
         }
@@ -798,6 +853,10 @@
             .app-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 600px) {
@@ -1020,7 +1079,7 @@
                 </div>
                 
                 <!-- ZUME Panel -->
-                <div class="app-panel" id="zume">
+                <div class="app-panel" id="zume" style="--app-accent: #00d4aa;">
                     <div class="app-header">
                         <img src="Bilder_und _andere_Assets_für_Website/Icons/ZUME_AppIcon-iOS-Default-1024x1024@1x.png" alt="ZUME" class="app-header-icon">
                         <div class="app-header-info">
@@ -1033,31 +1092,38 @@
                             </a>
                         </div>
                     </div>
-                    
+
+                    <hr class="section-divider">
+
                     <div class="features-section">
                         <h2>Features</h2>
                         <div class="features-grid">
                             <div class="feature-card">
-                                <div class="feature-icon">🪞</div>
+                                <div class="feature-icon" style="background: rgba(0,212,170,0.15);">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#00d4aa" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/></svg>
+                                </div>
                                 <h3>Mirror Mode</h3>
                                 <p>Intelligent mirror with Softbox lighting, Emotion Coach that detects your mood, and Celebrity Match to find your famous lookalike.</p>
                             </div>
                             <div class="feature-card">
-                                <div class="feature-icon">🔍</div>
+                                <div class="feature-icon" style="background: rgba(0,212,170,0.15);">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#00d4aa" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+                                </div>
                                 <h3>Magnifier Mode</h3>
                                 <p>Powerful magnification with real-time OCR text recognition and instant translation using iOS 17 Translation API.</p>
                             </div>
                             <div class="feature-card">
-                                <div class="feature-icon">📸</div>
+                                <div class="feature-icon" style="background: rgba(0,212,170,0.15);">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#00d4aa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
+                                </div>
                                 <h3>DailyPhoto Mode</h3>
                                 <p>Capture your daily journey with family profiles, ghost overlay for perfect alignment, and automatic time-lapse video creation.</p>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="screenshots-section">
-                        <h2>Screenshots</h2>
-                        <div class="screenshots-grid">
+                        <div class="screenshots-gallery">
                             <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/ZUME_Screenshots/1_Celeb_Match_en.png" alt="Celebrity Match"></div>
                             <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/ZUME_Screenshots/2_Coach_en.png" alt="Emotion Coach"></div>
                             <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/ZUME_Screenshots/3_DailyPhoto_en.png" alt="DailyPhoto"></div>
@@ -1068,7 +1134,7 @@
                 </div>
                 
                 <!-- PARANOID Panel -->
-                <div class="app-panel" id="paranoid">
+                <div class="app-panel" id="paranoid" style="--app-accent: #e63946;">
                     <div class="app-header">
                         <img src="Bilder_und _andere_Assets_für_Website/Icons/PARANOID_App_Icon-iOS-Default-1024x1024@1x.png" alt="PARANOID" class="app-header-icon">
                         <div class="app-header-info">
@@ -1076,43 +1142,52 @@
                             <p class="tagline">Multiplayer Social Deduction Party Game. One player is secretly the Chosen One – nobody knows who, not even the player themselves.</p>
                             <span class="platform-badge">iOS · 4-8 Players · Multiplayer</span>
                             <br>
-                            <span class="coming-soon-badge">🎭 Coming Soon</span>
+                            <span class="coming-soon-badge">Coming Soon</span>
                         </div>
                     </div>
-                    
+
+                    <hr class="section-divider">
+
                     <div class="features-section">
                         <h2>How It Works</h2>
                         <div class="features-grid">
                             <div class="feature-card">
-                                <div class="feature-icon">👥</div>
+                                <div class="feature-icon" style="background: rgba(230,57,70,0.15);">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#e63946" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="8" r="4"/><circle cx="17" cy="10" r="3"/><path d="M3 21v-1a6 6 0 0 1 12 0v1M17 16a4 4 0 0 1 4 4v1"/></svg>
+                                </div>
                                 <h3>4-8 Players</h3>
                                 <p>Gather your friends for a thrilling party game. Play together in the same room or remotely.</p>
                             </div>
                             <div class="feature-card">
-                                <div class="feature-icon">🎯</div>
+                                <div class="feature-icon" style="background: rgba(230,57,70,0.15);">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#e63946" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/><line x1="12" y1="3" x2="12" y2="6"/></svg>
+                                </div>
                                 <h3>The Chosen One</h3>
                                 <p>One player is secretly designated as the Chosen One. Nobody knows who it is – not even the player themselves.</p>
                             </div>
                             <div class="feature-card">
-                                <div class="feature-icon">🔍</div>
+                                <div class="feature-icon" style="background: rgba(230,57,70,0.15);">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#e63946" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+                                </div>
                                 <h3>8 Rounds</h3>
                                 <p>Discuss, deduce, and identify the Chosen One through strategic questioning and observation.</p>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="screenshots-section">
-                        <h2>Screenshots</h2>
-                        <div class="screenshots-grid">
+                        <div class="screenshots-gallery">
                             <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/PARANOID_Screenshots/1_Simulator Screenshot - iPhone 17 Pro Max - 2026-03-17 at 12.16.17.png" alt="PARANOID Screenshot 1"></div>
                             <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/PARANOID_Screenshots/2_Simulator Screenshot - iPhone 17 Pro Max - 2026-03-17 at 12.16.35.png" alt="PARANOID Screenshot 2"></div>
                             <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/PARANOID_Screenshots/3_Simulator Screenshot - iPhone 17 Pro Max - 2026-03-17 at 12.16.55.png" alt="PARANOID Screenshot 3"></div>
                         </div>
                     </div>
+
+                    <div class="status-pill"><span class="pill-dot"></span> Coming Soon – Stay tuned</div>
                 </div>
                 
                 <!-- CRYPTOR Panel -->
-                <div class="app-panel" id="cryptor">
+                <div class="app-panel" id="cryptor" style="--app-accent: #f7931a;">
                     <div class="app-header">
                         <img src="Bilder_und _andere_Assets_für_Website/Icons/CRYPTOR-iOS-Default-1024x1024@1x.png" alt="CRYPTOR" class="app-header-icon">
                         <div class="app-header-info">
@@ -1120,43 +1195,52 @@
                             <p class="tagline">The most intuitive crypto app for beginners AND advanced users. Track your portfolio and learn crypto through interactive education.</p>
                             <span class="platform-badge">iOS</span>
                             <br>
-                            <span class="coming-soon-badge">₿ Coming Soon</span>
+                            <span class="coming-soon-badge">Coming Soon</span>
                         </div>
                     </div>
-                    
+
+                    <hr class="section-divider">
+
                     <div class="features-section">
                         <h2>Features</h2>
                         <div class="features-grid">
                             <div class="feature-card">
-                                <div class="feature-icon">📊</div>
+                                <div class="feature-icon" style="background: rgba(247,147,26,0.15);">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#f7931a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                                </div>
                                 <h3>Portfolio Tracker</h3>
                                 <p>Track all your crypto holdings in one place. Real-time prices, performance charts, and portfolio analytics.</p>
                             </div>
                             <div class="feature-card">
-                                <div class="feature-icon">🎓</div>
+                                <div class="feature-icon" style="background: rgba(247,147,26,0.15);">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#f7931a" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                                </div>
                                 <h3>Interactive Education</h3>
                                 <p>Learn crypto through interactive lessons, quizzes, and simulations. From basics to advanced trading strategies.</p>
                             </div>
                             <div class="feature-card">
-                                <div class="feature-icon">🔔</div>
+                                <div class="feature-icon" style="background: rgba(247,147,26,0.15);">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#f7931a" stroke-width="2" stroke-linecap="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                                </div>
                                 <h3>Smart Alerts</h3>
                                 <p>Custom price alerts and market notifications. Never miss an important market movement.</p>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="screenshots-section">
-                        <h2>Screenshots</h2>
-                        <div class="screenshots-grid">
+                        <div class="screenshots-gallery">
                             <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/CRYPTOR_Screenshots/1_Simulator Screenshot - iPhone 17 Pro Max - 2026-03-17 at 12.17.55.png" alt="CRYPTOR Screenshot 1"></div>
                             <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/CRYPTOR_Screenshots/2_Simulator Screenshot - iPhone 17 Pro Max - 2026-03-17 at 12.18.08.png" alt="CRYPTOR Screenshot 2"></div>
                             <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/CRYPTOR_Screenshots/3_Simulator Screenshot - iPhone 17 Pro Max - 2026-03-17 at 12.18.25.png" alt="CRYPTOR Screenshot 3"></div>
                         </div>
                     </div>
+
+                    <div class="status-pill"><span class="pill-dot"></span> Coming Soon – Stay tuned</div>
                 </div>
                 
                 <!-- FOCUS-ON Panel -->
-                <div class="app-panel" id="focus">
+                <div class="app-panel" id="focus" style="--app-accent: #00d4aa;">
                     <div class="app-header">
                         <img src="Bilder_und _andere_Assets_für_Website/Icons/Focus-On-iOS-Default-1024x1024@1x.png" alt="FOCUS-ON" class="app-header-icon">
                         <div class="app-header-info">
@@ -1164,34 +1248,44 @@
                             <p class="tagline">Ambient soundscapes and focus music to boost your productivity and concentration. Find your flow state.</p>
                             <span class="platform-badge">iOS</span>
                             <br>
-                            <span class="coming-soon-badge">🎧 In Development</span>
+                            <span class="coming-soon-badge">In Development</span>
                         </div>
                     </div>
-                    
+
+                    <hr class="section-divider">
+
                     <div class="features-section">
                         <h2>Planned Features</h2>
                         <div class="features-grid">
                             <div class="feature-card">
-                                <div class="feature-icon">🌧️</div>
+                                <div class="feature-icon" style="background: rgba(0,212,170,0.15);">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#00d4aa" stroke-width="2" stroke-linecap="round"><path d="M12 2v6M8 4v4M16 4v4M4 10h16v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10z"/></svg>
+                                </div>
                                 <h3>Ambient Sounds</h3>
                                 <p>Rain, thunder, ocean waves, forest sounds, coffee shop ambience, and more. Mix and match to create your perfect soundscape.</p>
                             </div>
                             <div class="feature-card">
-                                <div class="feature-icon">🎵</div>
+                                <div class="feature-icon" style="background: rgba(0,212,170,0.15);">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#00d4aa" stroke-width="2" stroke-linecap="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                                </div>
                                 <h3>Focus Music</h3>
                                 <p>Curated lo-fi beats, binaural tones, and concentration-boosting music designed for deep work.</p>
                             </div>
                             <div class="feature-card">
-                                <div class="feature-icon">⏱️</div>
+                                <div class="feature-icon" style="background: rgba(0,212,170,0.15);">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#00d4aa" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                </div>
                                 <h3>Pomodoro Timer</h3>
                                 <p>Built-in focus timer with customizable work and break intervals. Track your productivity over time.</p>
                             </div>
                         </div>
                     </div>
+
+                    <div class="status-pill"><span class="pill-dot"></span> Coming Soon – Stay tuned</div>
                 </div>
                 
                 <!-- 3DME Panel -->
-                <div class="app-panel" id="3dme">
+                <div class="app-panel" id="3dme" style="--app-accent: #4a90d9;">
                     <div class="app-header">
                         <img src="Bilder_und _andere_Assets_für_Website/Icons/3DME_icon.png" alt="3DME" class="app-header-icon wide">
                         <div class="app-header-info">
@@ -1204,31 +1298,38 @@
                             </a>
                         </div>
                     </div>
-                    
+
+                    <hr class="section-divider">
+
                     <div class="features-section">
                         <h2>Technology</h2>
                         <div class="features-grid">
                             <div class="feature-card">
-                                <div class="feature-icon">🧠</div>
+                                <div class="feature-icon" style="background: rgba(74,144,217,0.15);">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="2" stroke-linecap="round"><path d="M12 2a8 8 0 0 0-8 8c0 3 2 6 4 8l4 4 4-4c2-2 4-5 4-8a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="2"/></svg>
+                                </div>
                                 <h3>AI Depth Estimation</h3>
                                 <p>Powered by Depth Anything V2 – state-of-the-art AI that analyzes your 2D photos and generates accurate depth maps.</p>
                             </div>
                             <div class="feature-card">
-                                <div class="feature-icon">⚡</div>
+                                <div class="feature-icon" style="background: rgba(74,144,217,0.15);">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="2" stroke-linecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                                </div>
                                 <h3>Metal Compute Shaders</h3>
                                 <p>Hardware-accelerated DIBR (Depth Image Based Rendering) using Apple's Metal framework for real-time performance.</p>
                             </div>
                             <div class="feature-card">
-                                <div class="feature-icon">📺</div>
+                                <div class="feature-icon" style="background: rgba(74,144,217,0.15);">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg>
+                                </div>
                                 <h3>Side-by-Side 3D</h3>
                                 <p>Outputs stereoscopic Side-by-Side images compatible with most polarized 3D TVs. Experience your memories in 3D.</p>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="screenshots-section">
-                        <h2>Screenshots</h2>
-                        <div class="screenshots-grid screenshots-grid-tv">
+                        <div class="screenshots-gallery">
                             <div class="screenshot screenshot-tv"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/3DME_Screenshots/1_Simulator Screenshot - Apple TV 4K (3rd generation) - 2026-03-17 at 12.31.12.png" alt="3DME Screenshot 1"></div>
                             <div class="screenshot screenshot-tv"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/3DME_Screenshots/2_Simulator Screenshot - Apple TV 4K (3rd generation) - 2026-03-17 at 12.31.45.png" alt="3DME Screenshot 2"></div>
                             <div class="screenshot screenshot-tv"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/3DME_Screenshots/3_Simulator Screenshot - Apple TV 4K (3rd generation) - 2026-03-17 at 12.32.24.png" alt="3DME Screenshot 3"></div>
