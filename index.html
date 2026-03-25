@@ -7,12 +7,21 @@
     <title>ZUME Studio - Independent App Development</title>
     
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        ::selection {
+            background: rgba(0, 212, 170, 0.3);
+            color: #fff;
+        }
+
         :root {
             --bg-dark: #000000;
             --bg-sidebar: #0a0a0a;
@@ -25,7 +34,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-dark);
             color: var(--text-primary);
-            line-height: 1.6;
+            line-height: 1.7;
             overflow: hidden;
             height: 100vh;
         }
@@ -294,17 +303,18 @@
         .app-store-badge {
             display: inline-block;
             margin-top: 20px;
-            transition: transform 0.3s, opacity 0.3s;
+            opacity: 0.85;
+            transition: transform 0.3s, opacity 0.2s ease;
         }
-        
+
         .app-store-badge img {
             height: 50px;
             width: auto;
         }
-        
+
         .app-store-badge:hover {
             transform: translateY(-2px);
-            opacity: 0.9;
+            opacity: 1;
         }
         
         .coming-soon-badge {
