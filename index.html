@@ -48,6 +48,29 @@
             color: #fff;
         }
 
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            z-index: 999;
+        }
+
+        .skip-link:focus {
+            left: 16px;
+            top: 16px;
+            width: auto;
+            height: auto;
+            padding: 12px 20px;
+            background: #00d4aa;
+            color: #000;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
         :root {
             --bg-dark: #000000;
             --bg-sidebar: #0a0a0a;
@@ -975,17 +998,18 @@
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <div class="layout">
         <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="logo" onclick="showPanel('welcome'); window.location.hash = '';" style="cursor: pointer;">
-                <img src="Bilder_und _andere_Assets_für_Website/ZUME_Studio_LOGO/ZUME_Studio_LOGO.003.png" alt="ZUME Studio">
+        <aside class="sidebar" aria-label="App navigation">
+            <div class="logo" onclick="showPanel('welcome'); window.location.hash = '';" style="cursor: pointer;" role="button" tabindex="0" aria-label="Back to home">
+                <img src="Bilder_und _andere_Assets_für_Website/ZUME_Studio_LOGO/ZUME_Studio_LOGO.003.png" alt="ZUME Studio Logo - Independent App Development">
             </div>
-            
-            <nav class="app-nav">
+
+            <nav class="app-nav" aria-label="App navigation">
                 <!-- ZUME -->
-                <div class="app-nav-item" data-app="zume" style="--app-color: #00d4aa;">
-                    <img src="Bilder_und _andere_Assets_für_Website/Icons/ZUME_AppIcon-iOS-Default-1024x1024@1x.png" alt="ZUME" class="app-icon">
+                <div class="app-nav-item" data-app="zume" style="--app-color: #00d4aa;" role="button" tabindex="0" aria-label="View ZUME app">
+                    <img src="Bilder_und _andere_Assets_für_Website/Icons/ZUME_AppIcon-iOS-Default-1024x1024@1x.png" alt="ZUME App Icon - Smart Camera Tools for iOS" class="app-icon">
                     <span class="app-name">ZUME</span>
                     <div class="tooltip">
                         <div class="tooltip-name">ZUME</div>
@@ -993,8 +1017,8 @@
                 </div>
 
                 <!-- PARANOID -->
-                <div class="app-nav-item" data-app="paranoid" style="--app-color: #e63946;">
-                    <img src="Bilder_und _andere_Assets_für_Website/Icons/PARANOID_App_Icon-iOS-Default-1024x1024@1x.png" alt="PARANOID" class="app-icon">
+                <div class="app-nav-item" data-app="paranoid" style="--app-color: #e63946;" role="button" tabindex="0" aria-label="View PARANOID app">
+                    <img src="Bilder_und _andere_Assets_für_Website/Icons/PARANOID_App_Icon-iOS-Default-1024x1024@1x.png" alt="PARANOID App Icon - Multiplayer Party Game" class="app-icon">
                     <span class="app-name">PARANOID</span>
                     <div class="tooltip">
                         <div class="tooltip-name">PARANOID</div>
@@ -1002,8 +1026,8 @@
                 </div>
 
                 <!-- CRYPTOR -->
-                <div class="app-nav-item" data-app="cryptor" style="--app-color: #f7931a;">
-                    <img src="Bilder_und _andere_Assets_für_Website/Icons/CRYPTOR-iOS-Default-1024x1024@1x.png" alt="CRYPTOR" class="app-icon">
+                <div class="app-nav-item" data-app="cryptor" style="--app-color: #f7931a;" role="button" tabindex="0" aria-label="View CRYPTOR app">
+                    <img src="Bilder_und _andere_Assets_für_Website/Icons/CRYPTOR-iOS-Default-1024x1024@1x.png" alt="CRYPTOR App Icon - Crypto Portfolio Tracker" class="app-icon">
                     <span class="app-name">CRYPTOR</span>
                     <div class="tooltip">
                         <div class="tooltip-name">CRYPTOR</div>
@@ -1011,8 +1035,8 @@
                 </div>
 
                 <!-- FOCUS-ON -->
-                <div class="app-nav-item" data-app="focus" style="--app-color: #00d4aa;">
-                    <img src="Bilder_und _andere_Assets_für_Website/Icons/Focus-On-iOS-Default-1024x1024@1x.png" alt="FOCUS-ON" class="app-icon">
+                <div class="app-nav-item" data-app="focus" style="--app-color: #00d4aa;" role="button" tabindex="0" aria-label="View FOCUS-ON app">
+                    <img src="Bilder_und _andere_Assets_für_Website/Icons/Focus-On-iOS-Default-1024x1024@1x.png" alt="FOCUS-ON App Icon - Ambient Sounds and Focus Music" class="app-icon">
                     <span class="app-name">FOCUS-ON</span>
                     <div class="tooltip">
                         <div class="tooltip-name">FOCUS-ON</div>
@@ -1020,8 +1044,8 @@
                 </div>
 
                 <!-- 3DME (wide icon) -->
-                <div class="app-nav-item wide-icon" data-app="3dme" style="--app-color: #4a90d9;">
-                    <img src="Bilder_und _andere_Assets_für_Website/Icons/3DME_icon.png" alt="3DME" class="app-icon">
+                <div class="app-nav-item wide-icon" data-app="3dme" style="--app-color: #4a90d9;" role="button" tabindex="0" aria-label="View 3DME app">
+                    <img src="Bilder_und _andere_Assets_für_Website/Icons/3DME_icon.png" alt="3DME App Icon - AI 3D Photo Conversion for Apple TV" class="app-icon">
                     <span class="app-name">3DME</span>
                     <div class="tooltip">
                         <div class="tooltip-name">3DME</div>
@@ -1039,15 +1063,15 @@
             </div>
             
             <!-- Content -->
-            <div class="content">
+            <div class="content" id="main-content">
                 <!-- Welcome Panel -->
-                <div class="app-panel active" id="welcome">
+                <section class="app-panel active" id="welcome" aria-label="Welcome">
                     <div class="welcome-panel">
                         <!-- Hero -->
                         <div class="welcome-hero">
                             <img src="Bilder_und _andere_Assets_für_Website/hero_bg.png" alt="" class="hero-bg">
                             <div class="hero-content">
-                                <img src="Bilder_und _andere_Assets_für_Website/ZUME_Studio_LOGO/ZUME_Studio_LOGO.003.png" alt="ZUME Studio" class="hero-logo">
+                                <img src="Bilder_und _andere_Assets_für_Website/ZUME_Studio_LOGO/ZUME_Studio_LOGO.003.png" alt="ZUME Studio Logo - Independent App Development" class="hero-logo">
                                 <h1 class="hero-tagline">Crafting Smart iOS & tvOS Apps</h1>
                                 <p class="hero-subtitle">Independent App Studio based in Germany</p>
                             </div>
@@ -1055,8 +1079,8 @@
 
                         <!-- Featured -->
                         <p class="section-label">Featured</p>
-                        <div class="featured-app" onclick="showPanel('zume')">
-                            <img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/ZUME_Screenshots/1_Celeb_Match_en.png" alt="ZUME Screenshot" class="featured-screenshot">
+                        <div class="featured-app" onclick="showPanel('zume')" role="button" tabindex="0" aria-label="View ZUME app details">
+                            <img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/ZUME_Screenshots/1_Celeb_Match_en.png" alt="ZUME Celebrity Match feature - find your famous lookalike" class="featured-screenshot">
                             <div class="featured-info">
                                 <h2>ZUME</h2>
                                 <p class="featured-desc">Smart Camera Tools – Mirror with Emotion Coach, Magnifier with OCR & Translation, DailyPhoto with Time-Lapse.</p>
@@ -1069,8 +1093,8 @@
                         <!-- App Grid -->
                         <p class="section-label">Our Apps</p>
                         <div class="app-grid">
-                            <div class="app-grid-card" style="--card-hover-color: #00d4aa;" onclick="showPanel('zume')">
-                                <img src="Bilder_und _andere_Assets_für_Website/Icons/ZUME_AppIcon-iOS-Default-1024x1024@1x.png" alt="ZUME" class="grid-icon">
+                            <div class="app-grid-card" style="--card-hover-color: #00d4aa;" onclick="showPanel('zume')" role="button" tabindex="0">
+                                <img src="Bilder_und _andere_Assets_für_Website/Icons/ZUME_AppIcon-iOS-Default-1024x1024@1x.png" alt="ZUME App Icon - Smart Camera Tools for iOS" class="grid-icon">
                                 <div class="grid-info">
                                     <h3>ZUME</h3>
                                     <p class="grid-desc">Smart Camera Tools with Mirror, Magnifier & DailyPhoto.</p>
@@ -1078,8 +1102,8 @@
                                 </div>
                             </div>
 
-                            <div class="app-grid-card" style="--card-hover-color: #e63946;" onclick="showPanel('paranoid')">
-                                <img src="Bilder_und _andere_Assets_für_Website/Icons/PARANOID_App_Icon-iOS-Default-1024x1024@1x.png" alt="PARANOID" class="grid-icon">
+                            <div class="app-grid-card" style="--card-hover-color: #e63946;" onclick="showPanel('paranoid')" role="button" tabindex="0">
+                                <img src="Bilder_und _andere_Assets_für_Website/Icons/PARANOID_App_Icon-iOS-Default-1024x1024@1x.png" alt="PARANOID App Icon - Multiplayer Party Game" class="grid-icon">
                                 <div class="grid-info">
                                     <h3>PARANOID</h3>
                                     <p class="grid-desc">Multiplayer Social Deduction Party Game for 4-8 Players.</p>
@@ -1087,8 +1111,8 @@
                                 </div>
                             </div>
 
-                            <div class="app-grid-card" style="--card-hover-color: #f7931a;" onclick="showPanel('cryptor')">
-                                <img src="Bilder_und _andere_Assets_für_Website/Icons/CRYPTOR-iOS-Default-1024x1024@1x.png" alt="CRYPTOR" class="grid-icon">
+                            <div class="app-grid-card" style="--card-hover-color: #f7931a;" onclick="showPanel('cryptor')" role="button" tabindex="0">
+                                <img src="Bilder_und _andere_Assets_für_Website/Icons/CRYPTOR-iOS-Default-1024x1024@1x.png" alt="CRYPTOR App Icon - Crypto Portfolio Tracker" class="grid-icon">
                                 <div class="grid-info">
                                     <h3>CRYPTOR</h3>
                                     <p class="grid-desc">Intuitive crypto portfolio tracker with interactive education.</p>
@@ -1096,8 +1120,8 @@
                                 </div>
                             </div>
 
-                            <div class="app-grid-card" style="--card-hover-color: #00d4aa;" onclick="showPanel('focus')">
-                                <img src="Bilder_und _andere_Assets_für_Website/Icons/Focus-On-iOS-Default-1024x1024@1x.png" alt="FOCUS-ON" class="grid-icon">
+                            <div class="app-grid-card" style="--card-hover-color: #00d4aa;" onclick="showPanel('focus')" role="button" tabindex="0">
+                                <img src="Bilder_und _andere_Assets_für_Website/Icons/Focus-On-iOS-Default-1024x1024@1x.png" alt="FOCUS-ON App Icon - Ambient Sounds and Focus Music" class="grid-icon">
                                 <div class="grid-info">
                                     <h3>FOCUS-ON</h3>
                                     <p class="grid-desc">Ambient soundscapes and focus music for productivity.</p>
@@ -1105,8 +1129,8 @@
                                 </div>
                             </div>
 
-                            <div class="app-grid-card" style="--card-hover-color: #4a90d9;" onclick="showPanel('3dme')">
-                                <img src="Bilder_und _andere_Assets_für_Website/Icons/3DME_icon.png" alt="3DME" class="grid-icon wide">
+                            <div class="app-grid-card" style="--card-hover-color: #4a90d9;" onclick="showPanel('3dme')" role="button" tabindex="0">
+                                <img src="Bilder_und _andere_Assets_für_Website/Icons/3DME_icon.png" alt="3DME App Icon - AI 3D Photo Conversion for Apple TV" class="grid-icon wide">
                                 <div class="grid-info">
                                     <h3>3DME</h3>
                                     <p class="grid-desc">AI-powered 2D to 3D photo conversion for Apple TV 4K.</p>
@@ -1115,14 +1139,14 @@
                             </div>
                         </div>
 
-                        <p class="welcome-footer">Made with ♥ in Germany</p>
+                        <footer class="welcome-footer">Made with ♥ in Germany</footer>
                     </div>
-                </div>
+                </section>
                 
                 <!-- ZUME Panel -->
-                <div class="app-panel" id="zume" style="--app-accent: #00d4aa;">
+                <article class="app-panel" id="zume" style="--app-accent: #00d4aa;" aria-label="ZUME App">
                     <div class="app-header">
-                        <img src="Bilder_und _andere_Assets_für_Website/Icons/ZUME_AppIcon-iOS-Default-1024x1024@1x.png" alt="ZUME" class="app-header-icon">
+                        <img src="Bilder_und _andere_Assets_für_Website/Icons/ZUME_AppIcon-iOS-Default-1024x1024@1x.png" alt="ZUME App Icon - Smart Camera Tools for iOS" class="app-header-icon">
                         <div class="app-header-info">
                             <h1>ZUME</h1>
                             <p class="tagline">Smart Camera Tools – Mirror with Emotion Coach, Magnifier with OCR & Translation, DailyPhoto with Time-Lapse.</p>
@@ -1136,7 +1160,7 @@
 
                     <hr class="section-divider">
 
-                    <div class="features-section">
+                    <section class="features-section" aria-label="Features">
                         <h2>Features</h2>
                         <div class="features-grid">
                             <div class="feature-card">
@@ -1161,23 +1185,23 @@
                                 <p>Capture your daily journey with family profiles, ghost overlay for perfect alignment, and automatic time-lapse video creation.</p>
                             </div>
                         </div>
-                    </div>
+                    </section>
 
-                    <div class="screenshots-section">
+                    <section class="screenshots-section" aria-label="Screenshots">
                         <div class="screenshots-gallery">
-                            <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/ZUME_Screenshots/1_Celeb_Match_en.png" alt="Celebrity Match"></div>
-                            <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/ZUME_Screenshots/2_Coach_en.png" alt="Emotion Coach"></div>
-                            <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/ZUME_Screenshots/3_DailyPhoto_en.png" alt="DailyPhoto"></div>
-                            <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/ZUME_Screenshots/4_DailyVideo_en.png" alt="DailyPhoto Video"></div>
-                            <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/ZUME_Screenshots/5_OCR_Transl_en.png" alt="OCR Translation"></div>
+                            <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/ZUME_Screenshots/1_Celeb_Match_en.png" alt="ZUME Celebrity Match feature - find your famous lookalike"></div>
+                            <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/ZUME_Screenshots/2_Coach_en.png" alt="ZUME Emotion Coach - real-time mood detection"></div>
+                            <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/ZUME_Screenshots/3_DailyPhoto_en.png" alt="ZUME DailyPhoto - capture your daily journey"></div>
+                            <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/ZUME_Screenshots/4_DailyVideo_en.png" alt="ZUME DailyPhoto Video - automatic time-lapse creation"></div>
+                            <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/ZUME_Screenshots/5_OCR_Transl_en.png" alt="ZUME OCR Translation - real-time text recognition"></div>
                         </div>
-                    </div>
-                </div>
+                    </section>
+                </article>
                 
                 <!-- PARANOID Panel -->
-                <div class="app-panel" id="paranoid" style="--app-accent: #e63946;">
+                <article class="app-panel" id="paranoid" style="--app-accent: #e63946;" aria-label="PARANOID App">
                     <div class="app-header">
-                        <img src="Bilder_und _andere_Assets_für_Website/Icons/PARANOID_App_Icon-iOS-Default-1024x1024@1x.png" alt="PARANOID" class="app-header-icon">
+                        <img src="Bilder_und _andere_Assets_für_Website/Icons/PARANOID_App_Icon-iOS-Default-1024x1024@1x.png" alt="PARANOID App Icon - Multiplayer Party Game" class="app-header-icon">
                         <div class="app-header-info">
                             <h1>PARANOID</h1>
                             <p class="tagline">Multiplayer Social Deduction Party Game. One player is secretly the Chosen One – nobody knows who, not even the player themselves.</p>
@@ -1189,7 +1213,7 @@
 
                     <hr class="section-divider">
 
-                    <div class="features-section">
+                    <section class="features-section" aria-label="How It Works">
                         <h2>How It Works</h2>
                         <div class="features-grid">
                             <div class="feature-card">
@@ -1214,23 +1238,23 @@
                                 <p>Discuss, deduce, and identify the Chosen One through strategic questioning and observation.</p>
                             </div>
                         </div>
-                    </div>
+                    </section>
 
-                    <div class="screenshots-section">
+                    <section class="screenshots-section" aria-label="Screenshots">
                         <div class="screenshots-gallery">
-                            <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/PARANOID_Screenshots/1_Simulator Screenshot - iPhone 17 Pro Max - 2026-03-17 at 12.16.17.png" alt="PARANOID Screenshot 1"></div>
-                            <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/PARANOID_Screenshots/2_Simulator Screenshot - iPhone 17 Pro Max - 2026-03-17 at 12.16.35.png" alt="PARANOID Screenshot 2"></div>
-                            <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/PARANOID_Screenshots/3_Simulator Screenshot - iPhone 17 Pro Max - 2026-03-17 at 12.16.55.png" alt="PARANOID Screenshot 3"></div>
+                            <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/PARANOID_Screenshots/1_Simulator Screenshot - iPhone 17 Pro Max - 2026-03-17 at 12.16.17.png" alt="PARANOID game lobby - player setup screen"></div>
+                            <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/PARANOID_Screenshots/2_Simulator Screenshot - iPhone 17 Pro Max - 2026-03-17 at 12.16.35.png" alt="PARANOID gameplay - social deduction round"></div>
+                            <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/PARANOID_Screenshots/3_Simulator Screenshot - iPhone 17 Pro Max - 2026-03-17 at 12.16.55.png" alt="PARANOID voting - identify the Chosen One"></div>
                         </div>
-                    </div>
+                    </section>
 
                     <div class="status-pill"><span class="pill-dot"></span> Coming Soon – Stay tuned</div>
-                </div>
-                
+                </article>
+
                 <!-- CRYPTOR Panel -->
-                <div class="app-panel" id="cryptor" style="--app-accent: #f7931a;">
+                <article class="app-panel" id="cryptor" style="--app-accent: #f7931a;" aria-label="CRYPTOR App">
                     <div class="app-header">
-                        <img src="Bilder_und _andere_Assets_für_Website/Icons/CRYPTOR-iOS-Default-1024x1024@1x.png" alt="CRYPTOR" class="app-header-icon">
+                        <img src="Bilder_und _andere_Assets_für_Website/Icons/CRYPTOR-iOS-Default-1024x1024@1x.png" alt="CRYPTOR App Icon - Crypto Portfolio Tracker" class="app-header-icon">
                         <div class="app-header-info">
                             <h1>CRYPTOR</h1>
                             <p class="tagline">The most intuitive crypto app for beginners AND advanced users. Track your portfolio and learn crypto through interactive education.</p>
@@ -1242,7 +1266,7 @@
 
                     <hr class="section-divider">
 
-                    <div class="features-section">
+                    <section class="features-section" aria-label="Features">
                         <h2>Features</h2>
                         <div class="features-grid">
                             <div class="feature-card">
@@ -1267,23 +1291,23 @@
                                 <p>Custom price alerts and market notifications. Never miss an important market movement.</p>
                             </div>
                         </div>
-                    </div>
+                    </section>
 
-                    <div class="screenshots-section">
+                    <section class="screenshots-section" aria-label="Screenshots">
                         <div class="screenshots-gallery">
-                            <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/CRYPTOR_Screenshots/1_Simulator Screenshot - iPhone 17 Pro Max - 2026-03-17 at 12.17.55.png" alt="CRYPTOR Screenshot 1"></div>
-                            <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/CRYPTOR_Screenshots/2_Simulator Screenshot - iPhone 17 Pro Max - 2026-03-17 at 12.18.08.png" alt="CRYPTOR Screenshot 2"></div>
-                            <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/CRYPTOR_Screenshots/3_Simulator Screenshot - iPhone 17 Pro Max - 2026-03-17 at 12.18.25.png" alt="CRYPTOR Screenshot 3"></div>
+                            <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/CRYPTOR_Screenshots/1_Simulator Screenshot - iPhone 17 Pro Max - 2026-03-17 at 12.17.55.png" alt="CRYPTOR portfolio dashboard - track your crypto holdings"></div>
+                            <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/CRYPTOR_Screenshots/2_Simulator Screenshot - iPhone 17 Pro Max - 2026-03-17 at 12.18.08.png" alt="CRYPTOR education - interactive crypto lessons"></div>
+                            <div class="screenshot"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/CRYPTOR_Screenshots/3_Simulator Screenshot - iPhone 17 Pro Max - 2026-03-17 at 12.18.25.png" alt="CRYPTOR price alerts - custom market notifications"></div>
                         </div>
-                    </div>
+                    </section>
 
                     <div class="status-pill"><span class="pill-dot"></span> Coming Soon – Stay tuned</div>
-                </div>
+                </article>
                 
                 <!-- FOCUS-ON Panel -->
-                <div class="app-panel" id="focus" style="--app-accent: #00d4aa;">
+                <article class="app-panel" id="focus" style="--app-accent: #00d4aa;" aria-label="FOCUS-ON App">
                     <div class="app-header">
-                        <img src="Bilder_und _andere_Assets_für_Website/Icons/Focus-On-iOS-Default-1024x1024@1x.png" alt="FOCUS-ON" class="app-header-icon">
+                        <img src="Bilder_und _andere_Assets_für_Website/Icons/Focus-On-iOS-Default-1024x1024@1x.png" alt="FOCUS-ON App Icon - Ambient Sounds and Focus Music" class="app-header-icon">
                         <div class="app-header-info">
                             <h1>FOCUS-ON</h1>
                             <p class="tagline">Ambient soundscapes and focus music to boost your productivity and concentration. Find your flow state.</p>
@@ -1295,7 +1319,7 @@
 
                     <hr class="section-divider">
 
-                    <div class="features-section">
+                    <section class="features-section" aria-label="Planned Features">
                         <h2>Planned Features</h2>
                         <div class="features-grid">
                             <div class="feature-card">
@@ -1320,15 +1344,15 @@
                                 <p>Built-in focus timer with customizable work and break intervals. Track your productivity over time.</p>
                             </div>
                         </div>
-                    </div>
+                    </section>
 
                     <div class="status-pill"><span class="pill-dot"></span> Coming Soon – Stay tuned</div>
-                </div>
-                
+                </article>
+
                 <!-- 3DME Panel -->
-                <div class="app-panel" id="3dme" style="--app-accent: #4a90d9;">
+                <article class="app-panel" id="3dme" style="--app-accent: #4a90d9;" aria-label="3DME App">
                     <div class="app-header">
-                        <img src="Bilder_und _andere_Assets_für_Website/Icons/3DME_icon.png" alt="3DME" class="app-header-icon wide">
+                        <img src="Bilder_und _andere_Assets_für_Website/Icons/3DME_icon.png" alt="3DME App Icon - AI 3D Photo Conversion for Apple TV" class="app-header-icon wide">
                         <div class="app-header-info">
                             <h1>3DME</h1>
                             <p class="tagline">Convert your 2D photos into stunning stereoscopic 3D images using AI-powered depth estimation. For Apple TV 4K and polarized 3D TVs.</p>
@@ -1342,7 +1366,7 @@
 
                     <hr class="section-divider">
 
-                    <div class="features-section">
+                    <section class="features-section" aria-label="Technology">
                         <h2>Technology</h2>
                         <div class="features-grid">
                             <div class="feature-card">
@@ -1367,20 +1391,20 @@
                                 <p>Outputs stereoscopic Side-by-Side images compatible with most polarized 3D TVs. Experience your memories in 3D.</p>
                             </div>
                         </div>
-                    </div>
+                    </section>
 
-                    <div class="screenshots-section">
+                    <section class="screenshots-section" aria-label="Screenshots">
                         <div class="screenshots-gallery">
-                            <div class="screenshot screenshot-tv"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/3DME_Screenshots/1_Simulator Screenshot - Apple TV 4K (3rd generation) - 2026-03-17 at 12.31.12.png" alt="3DME Screenshot 1"></div>
-                            <div class="screenshot screenshot-tv"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/3DME_Screenshots/2_Simulator Screenshot - Apple TV 4K (3rd generation) - 2026-03-17 at 12.31.45.png" alt="3DME Screenshot 2"></div>
-                            <div class="screenshot screenshot-tv"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/3DME_Screenshots/3_Simulator Screenshot - Apple TV 4K (3rd generation) - 2026-03-17 at 12.32.24.png" alt="3DME Screenshot 3"></div>
-                            <div class="screenshot screenshot-tv"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/3DME_Screenshots/4_Simulator Screenshot - Apple TV 4K (3rd generation) - 2026-03-17 at 12.32.34.png" alt="3DME Screenshot 4"></div>
+                            <div class="screenshot screenshot-tv"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/3DME_Screenshots/1_Simulator Screenshot - Apple TV 4K (3rd generation) - 2026-03-17 at 12.31.12.png" alt="3DME photo library browser on Apple TV"></div>
+                            <div class="screenshot screenshot-tv"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/3DME_Screenshots/2_Simulator Screenshot - Apple TV 4K (3rd generation) - 2026-03-17 at 12.31.45.png" alt="3DME AI depth estimation processing"></div>
+                            <div class="screenshot screenshot-tv"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/3DME_Screenshots/3_Simulator Screenshot - Apple TV 4K (3rd generation) - 2026-03-17 at 12.32.24.png" alt="3DME stereoscopic 3D output preview"></div>
+                            <div class="screenshot screenshot-tv"><img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/3DME_Screenshots/4_Simulator Screenshot - Apple TV 4K (3rd generation) - 2026-03-17 at 12.32.34.png" alt="3DME side-by-side 3D image result"></div>
                         </div>
-                    </div>
-                </div>
-                
+                    </section>
+                </article>
+
                 <!-- Privacy Panel -->
-                <div class="app-panel legal-panel" id="privacy">
+                <section class="app-panel legal-panel" id="privacy" aria-label="Privacy Policy">
                     <div class="privacy-header">
                         <h1>Privacy Policy</h1>
                         <div class="language-switch">
@@ -2185,10 +2209,10 @@
                     </div>
 
                     </div><!-- End German Content -->
-                </div>
-                
+                </section>
+
                 <!-- Imprint Panel -->
-                <div class="app-panel legal-panel" id="imprint">
+                <section class="app-panel legal-panel" id="imprint" aria-label="Imprint">
                     <div class="privacy-header">
                         <h1 id="imprint-title">Imprint</h1>
                         <div class="language-switch">
@@ -2256,12 +2280,20 @@
                         <h2>Verbraucherstreitbeilegung / Universalschlichtungsstelle</h2>
                         <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
                     </div>
-                </div>
+                </section>
             </div>
         </main>
     </div>
     
     <script>
+        // Keyboard support for elements with role="button"
+        document.addEventListener('keydown', function(e) {
+            if ((e.key === 'Enter' || e.key === ' ') && e.target.getAttribute('role') === 'button') {
+                e.preventDefault();
+                e.target.click();
+            }
+        });
+
         // App Navigation
         const navItems = document.querySelectorAll('.app-nav-item');
         const topbarLinks = document.querySelectorAll('.topbar-link');
