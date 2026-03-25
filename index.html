@@ -591,51 +591,218 @@
         
         /* Welcome Panel */
         .welcome-panel {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
+            padding: 40px 20px;
+        }
+
+        .welcome-hero {
             text-align: center;
+            margin-bottom: 48px;
         }
-        
-        .welcome-panel h1 {
-            font-family: "Phosphate", "Impact", "Arial Black", sans-serif;
-            font-size: 3.5rem;
-            font-weight: 400;
+
+        .welcome-hero .hero-logo {
+            width: 100px;
             margin-bottom: 20px;
-            letter-spacing: 2px;
         }
-        
-        .welcome-panel h1 .highlight {
+
+        .welcome-hero .hero-tagline {
+            font-family: "Phosphate", "Impact", "Arial Black", sans-serif;
+            font-size: 2.8rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin: 0 0 12px;
             background: linear-gradient(135deg, #00d4ff, #7c3aed, #ff006e);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        
-        .welcome-panel p {
+
+        .welcome-hero .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Featured App */
+        .featured-app {
+            position: relative;
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 40px;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+
+        .featured-app:hover {
+            border-color: #00d4aa;
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #00d4aa;
+            color: #000;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .featured-app .featured-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 24px;
+            flex-shrink: 0;
+        }
+
+        .featured-app .featured-screenshot {
+            width: 140px;
+            border-radius: 12px;
+            flex-shrink: 0;
+        }
+
+        .featured-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .featured-info h2 {
+            margin: 0 0 6px;
+            font-size: 1.6rem;
+        }
+
+        .featured-info .featured-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin: 0 0 12px;
+            line-height: 1.5;
+        }
+
+        .featured-info .app-store-badge img {
+            height: 36px;
+        }
+
+        /* App Grid */
+        .app-grid-section h2 {
             font-size: 1.2rem;
             color: var(--text-secondary);
-            max-width: 500px;
+            margin: 0 0 20px;
+            font-weight: 500;
         }
-        
-        .welcome-hint {
-            margin-top: 40px;
+
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .app-grid-card {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 14px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 16px;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+
+        .app-grid-card:hover {
+            border-color: var(--card-hover-color, #00d4aa);
+        }
+
+        .app-grid-card .grid-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 18px;
+            flex-shrink: 0;
+        }
+
+        .app-grid-card .grid-icon.wide {
+            object-fit: contain;
+        }
+
+        .grid-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .grid-info h3 {
+            margin: 0 0 6px;
+            font-size: 1.1rem;
+        }
+
+        .grid-info .grid-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .grid-badge-platform {
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.1);
             color: var(--text-secondary);
-            font-size: 0.9rem;
         }
-        
-        .welcome-hint .arrow {
-            font-size: 1.5rem;
-            animation: bounce 1.5s infinite;
+
+        .grid-badge-status {
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 600;
         }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(-10px); }
+
+        .grid-badge-status.live {
+            background: rgba(0,212,170,0.15);
+            color: #00d4aa;
+        }
+
+        .grid-badge-status.soon {
+            background: rgba(255,255,255,0.08);
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 900px) {
+            .welcome-hero .hero-tagline {
+                font-size: 2rem;
+            }
+
+            .featured-app {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .featured-app .featured-screenshot {
+                width: 120px;
+            }
+
+            .featured-badge {
+                position: static;
+                display: inline-block;
+                margin-bottom: 8px;
+            }
+
+            .app-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .app-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-app .featured-screenshot {
+                display: none;
+            }
         }
         
         /* Responsive */
@@ -759,11 +926,86 @@
                 <!-- Welcome Panel -->
                 <div class="app-panel active" id="welcome">
                     <div class="welcome-panel">
-                        <h1>Welcome to <span class="highlight">ZUME Studio</span></h1>
-                        <p>Independent App Development for iOS, tvOS & Multiplayer experiences. Based in Germany.</p>
-                        <div class="welcome-hint">
-                            <span class="arrow">←</span>
-                            <span>Select an app to learn more</span>
+                        <!-- Hero -->
+                        <div class="welcome-hero">
+                            <img src="Bilder_und _andere_Assets_für_Website/ZUME_Studio_LOGO/ZUME_Studio_LOGO.003.png" alt="ZUME Studio" class="hero-logo">
+                            <h1 class="hero-tagline">Crafting Smart iOS & tvOS Apps</h1>
+                            <p class="hero-subtitle">Independent App Studio based in Germany</p>
+                        </div>
+
+                        <!-- Featured App -->
+                        <div class="featured-app" onclick="showPanel('zume')">
+                            <span class="featured-badge">Featured</span>
+                            <img src="Bilder_und _andere_Assets_für_Website/Icons/ZUME_AppIcon-iOS-Default-1024x1024@1x.png" alt="ZUME" class="featured-icon">
+                            <img src="Bilder_und _andere_Assets_für_Website/Sceenshots_f_Webseite/ZUME_Screenshots/1_Celeb_Match_en.png" alt="ZUME Screenshot" class="featured-screenshot">
+                            <div class="featured-info">
+                                <h2>ZUME</h2>
+                                <p class="featured-desc">Smart Camera Tools – Mirror with Emotion Coach, Magnifier with OCR & Translation, DailyPhoto with Time-Lapse.</p>
+                                <a href="https://apps.apple.com/app/id6758212967" class="app-store-badge" onclick="event.stopPropagation()">
+                                    <img src="Bilder_und _andere_Assets_für_Website/Download_on_App_Store/Black_lockup/SVG/Download_on_the_App_Store_Badge_DE_RGB_blk_092917.svg" alt="Download on the App Store">
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- App Grid -->
+                        <div class="app-grid-section">
+                            <h2>All Apps</h2>
+                            <div class="app-grid">
+                                <div class="app-grid-card" style="--card-hover-color: #00d4aa;" onclick="showPanel('zume')">
+                                    <img src="Bilder_und _andere_Assets_für_Website/Icons/ZUME_AppIcon-iOS-Default-1024x1024@1x.png" alt="ZUME" class="grid-icon">
+                                    <div class="grid-info">
+                                        <h3>ZUME</h3>
+                                        <div class="grid-badges">
+                                            <span class="grid-badge-platform">iOS</span>
+                                            <span class="grid-badge-status live">Live</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="app-grid-card" style="--card-hover-color: #e63946;" onclick="showPanel('paranoid')">
+                                    <img src="Bilder_und _andere_Assets_für_Website/Icons/PARANOID_App_Icon-iOS-Default-1024x1024@1x.png" alt="PARANOID" class="grid-icon">
+                                    <div class="grid-info">
+                                        <h3>PARANOID</h3>
+                                        <div class="grid-badges">
+                                            <span class="grid-badge-platform">iOS</span>
+                                            <span class="grid-badge-status soon">Coming Soon</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="app-grid-card" style="--card-hover-color: #f7931a;" onclick="showPanel('cryptor')">
+                                    <img src="Bilder_und _andere_Assets_für_Website/Icons/CRYPTOR-iOS-Default-1024x1024@1x.png" alt="CRYPTOR" class="grid-icon">
+                                    <div class="grid-info">
+                                        <h3>CRYPTOR</h3>
+                                        <div class="grid-badges">
+                                            <span class="grid-badge-platform">iOS</span>
+                                            <span class="grid-badge-status soon">Coming Soon</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="app-grid-card" style="--card-hover-color: #00d4aa;" onclick="showPanel('focus')">
+                                    <img src="Bilder_und _andere_Assets_für_Website/Icons/Focus-On-iOS-Default-1024x1024@1x.png" alt="FOCUS-ON" class="grid-icon">
+                                    <div class="grid-info">
+                                        <h3>FOCUS-ON</h3>
+                                        <div class="grid-badges">
+                                            <span class="grid-badge-platform">iOS</span>
+                                            <span class="grid-badge-status soon">In Development</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="app-grid-card" style="--card-hover-color: #4a90d9;" onclick="showPanel('3dme')">
+                                    <img src="Bilder_und _andere_Assets_für_Website/Icons/3DME_icon.png" alt="3DME" class="grid-icon wide">
+                                    <div class="grid-info">
+                                        <h3>3DME</h3>
+                                        <div class="grid-badges">
+                                            <span class="grid-badge-platform">tvOS</span>
+                                            <span class="grid-badge-status live">Live</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
