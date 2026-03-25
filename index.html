@@ -665,8 +665,29 @@
         }
 
         .welcome-hero {
+            position: relative;
+            overflow: hidden;
             text-align: center;
+            padding: 60px 20px 48px;
+            margin: -40px -20px 0;
             margin-bottom: 0;
+        }
+
+        .welcome-hero .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .welcome-hero .hero-content {
+            position: relative;
+            z-index: 1;
         }
 
         .welcome-hero .hero-logo {
@@ -686,7 +707,7 @@
         .welcome-hero .hero-subtitle {
             font-size: 1.1rem;
             color: rgba(255,255,255,0.6);
-            margin: 0 0 48px;
+            margin: 0;
         }
 
         /* Section Labels */
@@ -764,6 +785,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             width: calc(33.333% - 11px);
+            max-width: 340px;
             min-height: 140px;
         }
 
@@ -838,8 +860,13 @@
                 font-size: 1.8rem;
             }
 
+            .welcome-hero {
+                padding: 40px 20px 36px;
+            }
+
             .app-grid-card {
                 width: calc(50% - 8px);
+                max-width: none;
             }
 
             .features-grid {
@@ -992,9 +1019,12 @@
                     <div class="welcome-panel">
                         <!-- Hero -->
                         <div class="welcome-hero">
-                            <img src="Bilder_und _andere_Assets_für_Website/ZUME_Studio_LOGO/ZUME_Studio_LOGO.003.png" alt="ZUME Studio" class="hero-logo">
-                            <h1 class="hero-tagline">Crafting Smart iOS & tvOS Apps</h1>
-                            <p class="hero-subtitle">Independent App Studio based in Germany</p>
+                            <img src="Bilder_und _andere_Assets_für_Website/hero_bg.png" alt="" class="hero-bg">
+                            <div class="hero-content">
+                                <img src="Bilder_und _andere_Assets_für_Website/ZUME_Studio_LOGO/ZUME_Studio_LOGO.003.png" alt="ZUME Studio" class="hero-logo">
+                                <h1 class="hero-tagline">Crafting Smart iOS & tvOS Apps</h1>
+                                <p class="hero-subtitle">Independent App Studio based in Germany</p>
+                            </div>
                         </div>
 
                         <!-- Featured -->
