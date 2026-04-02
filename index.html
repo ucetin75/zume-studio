@@ -2536,7 +2536,10 @@
                 // Check for privacy sub-tabs (e.g., #privacy-zume)
                 if (hash.startsWith('privacy-')) {
                     showPanel('privacy');
-                    const appName = hash.replace('privacy-', '');
+                    // Map short aliases to actual tab names
+                    const privacyAliases = { 'focus': 'focus-on' };
+                    let appName = hash.replace('privacy-', '');
+                    appName = privacyAliases[appName] || appName;
                     // Update currentPrivacyApp and trigger tab switch
                     currentPrivacyApp = appName;
                     const privacyTab = document.querySelector(`[data-privacy-app="${appName}"]`);
